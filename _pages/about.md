@@ -39,9 +39,10 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 
 **Jianzong Wu\***, Xiangtai Li\*, Henghui Ding, Xia Li, Guangliang Cheng, Yunhai Tong, Chen Change Loy
 
-[**Code**](https://github.com/jianzongwu/betrayed-by-captions)
-|
 Query-based open vocabulary segmentation aided by caption generation.
+|
+[**Code**](https://github.com/jianzongwu/betrayed-by-captions)
+
 </div>
 </div>
 
