@@ -23,11 +23,13 @@ My research interest focuses on multi-modal learning, including feature alignmen
 
 
 # 🔥 News
+
 - *2023.07*: &nbsp;🎉🎉 CGG is accepted by ICCV-2023.
 
-# 📝 Publications 
+# 📝 Selected Publications 
 
 Full publications including arXiv papers can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN)
+
 \* means equal contribution.
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/CGG.png' alt="sym" width="100%"></div></div>
@@ -38,6 +40,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 **Jianzong Wu\***, Xiangtai Li\*, Henghui Ding, Xia Li, Guangliang Cheng, Yunhai Tong, Chen Change Loy
 
 [**Code**](https://github.com/jianzongwu/betrayed-by-captions)
+|
 Query-based open vocabulary segmentation aided by caption generation.
 </div>
 </div>
