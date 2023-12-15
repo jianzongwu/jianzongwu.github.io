@@ -34,32 +34,32 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 
 ## Selected Publications
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/CGG.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
-
-[Betrayed by Captions: Joint Caption Grounding and Generation for Open Vocabulary Instance Segmentation](https://arxiv.org/abs/2301.00805)
-
-**Jianzong Wu\***, Xiangtai Li\*, Henghui Ding, Xia Li, Guangliang Cheng, Yunhai Tong, Chen Change Loy
-
-Query-based open vocabulary segmentation aided by caption generation.
-|
-[**Code**](https://github.com/jianzongwu/betrayed-by-captions)
-
-</div>
-</div>
-
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards Language-Driven Video Inpainting via Multimodal Large Language Models](https://arxiv.org/abs/2301.00805)
 
 **Jianzong Wu**, Xiangtai Li, Chenyang Si, Shangchen Zhou, Jingkang Yang, Jiangning Zhang, Yining Li, Kai Chen, Yunhai Tong, Zewei Liu, Chen Change Loy
 
-Novel language-driven video inpainting task, dataset, and model.
+[**Project**](https://jianzongwu.github.io/projects/rovi/)
 |
 [**Code**](https://github.com/jianzongwu/Language-Driven-Video-Inpainting)
-|
-[**Project**](https://jianzongwu.github.io/projects/rovi/)
+
+- Novel language-driven video inpainting task, dataset, and model.
+
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/CGG.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Betrayed by Captions: Joint Caption Grounding and Generation for Open Vocabulary Instance Segmentation](https://arxiv.org/abs/2301.00805)
+
+**Jianzong Wu\***, Xiangtai Li\*, Henghui Ding, Xia Li, Guangliang Cheng, Yunhai Tong, Chen Change Loy
+
+[**Code**](https://github.com/jianzongwu/betrayed-by-captions)
+
+- Query-based open vocabulary segmentation aided by caption generation.
 
 </div>
 </div>
