@@ -37,7 +37,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Towards Language-Driven Video Inpainting via Multimodal Large Language Models](https://arxiv.org/abs/2301.00805)
+[Towards Language-Driven Video Inpainting via Multimodal Large Language Models](pass)
 
 **Jianzong Wu**, Xiangtai Li, Chenyang Si, Shangchen Zhou, Jingkang Yang, Jiangning Zhang, Yining Li, Kai Chen, Yunhai Tong, Zewei Liu, Chen Change Loy
 
