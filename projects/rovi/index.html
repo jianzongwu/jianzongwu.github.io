@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Towards Language-Driven Video Inpainting via Multimodal Large Language Models">
+  <meta name="keywords" content="Video Inpainting, Multimodal, Large Language Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Towards Language-Driven Video Inpainting via Multimodal Large Language Models</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Towards Language-Driven Video Inpainting via Multimodal Large Language Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jianzongwu.github.io">Jianzong Wu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://lxtgh.github.io">Xiangtai Li</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://chenyangsi.github.io">Chenyang Si</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://shangchenzhou.com/">Shangchen Zhou</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://jingkang50.github.io/">Jingkang Yang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zhangzjn.github.io/">Jiangning Zhang</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/ly015">Yining Li</a><sup>4</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://chenkai.site/">Kai Chen</a><sup>4</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ">Yunhai Tong</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://liuziwei7.github.io/">Ziwei Liu</a><sup>2</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://www.mmlab-ntu.com/person/ccloy/">Chen Change Loy</a><sup>2</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Peking University</span>
+            <span class="author-block"><sup>2</sup>S-Lab, Nanyang Technological University</span>
+            <span class="author-block"><sup>3</sup>Zhejiang University</span>
+            <span class="author-block"><sup>4</sup>Shanghai AI Laboratory</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="pass"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/jianzongwu/Language-Driven-Video-Inpainting"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="pass"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper Teaser -->
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <div class="publication-img">
+            <img id="teaser" src="./static/images/teaser.png" style="width:1200px;"/>
+          </div>
+        </div>
+      </div>
+      <h2 class="subtitle">
+        We propose Language-Driven Video Inpainting. It contains two sub-tasks based on the expression types. The referring video inpainting task takes simple referring expressions as input, while interactive video inpainting receives chat-style conversations. The conversation may encounter implicit requests, and the model needs to reason for a correct understanding.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- /Paper Teaser -->
+
+<!-- Paper video. -->
+<section class="hero is-small">
+  <div class="columns is-centered has-text-centered"  style="margin-top: -10px; margin-bottom: 20px;">
+    <div class="column is-three-fifths">
+      <h2 class="title is-3">Video</h2>
+      <div class="publication-video">
+        <iframe src="https://youtu.be/2KS1-53FtEI" frameborder="10"
+          allow="autoplay; encrypted-media" width="50%" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Paper video.   -->
+
+<!-- Abstract. -->
+<section class="hero is-light">
+  <div class="container is-max-desktop ">
+    <div class="columns is-centered has-text-centered" style="margin-top: 10px; margin-bottom: 0px;">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In the field of video inpainting, traditional methods rely on pre-computed binary masks to identify areas for restoration. The mask labeling process can be time-consuming and labor-intensive, particularly in applications like object removal. This paper introduces a pioneering language-driven video inpainting task that leverages natural language instructions. Our proposed language-driven video inpainting task uniquely utilizes natural language, including chatstyle conversations, to guide the inpainting process. To support this innovative approach, we develop the Remove Objects from Videos by Instructions (ROVI) dataset, comprising 5,650 videos and 9,091 inpainting results, specifically tailored to facilitate training and evaluation in this new paradigm. We present a novel diffusion-based language-driven video inpainting framework, representing the first end-to-end baseline for this task. This framework is distinguished by its integration with Multimodal Large Language Models, which enables it to comprehend and effectively process complex language-based inpainting requests. Our comprehensive evaluation, encompassing both quantitative metrics and qualitative analysis, demonstrates the robustness and versatility of our dataset and the efficacy of our proposed model in handling a wide range of inpainting scenarios driven by natural language instructions.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Abstract. -->
+
+<!-- Framework. -->
+<section class="section" style="margin-top:-50px; margin-bottom:-50px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3 is-centered">LGVI Framework</h2>
+            <div class="publication-img">
+              <img id="architecture" src="./static/images/LGVI-architecture.png" style="width:1000px; margin-top:10px;margin-bottom:10px;"/>
+            </div>
+          </div>
+        </div>
+        <p>
+          The proposed LGVI and LGVI-I framework. We inflate the U-Net with a temporal dimension to allow video input. To ensure temporal consistency in the generated videos, we introduce a temporal attention module between cross-attention and FFN layers. Additionally, we propose a mask decoder module for explicit guidance in inpainting tasks. We augment LGVI with MLLM joint training for interactive video inpainting, resulting in LGVI-I as the baseline. The output of MLLM includes a set of prompt tokens, which is fed into the cross attention of the U-Net.
+        </p>
+    </div>
+  </div>
+</section>
+<!-- /Framework  -->
+
+<!-- Dataset. -->
+<section class="section" style="margin-top:-150px; margin-bottom:-50px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3 is-centered">ROVI Dataset</h2>
+            <div class="publication-img">
+              <img id="architecture" src="./static/images/ROVI-dataset.png" style="width:1000px; margin-top:10px;margin-bottom:10px;"/>
+            </div>
+          </div>
+        </div>
+        <p>
+          The statistics of the proposed ROVI dataset. Our ROVI dataset is the first for language guided video inpainting (LVI) and interactive video inpainting (IVI) tasks.
+        </p>
+    </div>
+  </div>
+</section>
+<!-- /Dataset  -->
+
+<!-- Results -->
+<section>
+  <div class="container is-max-desktop" style="margin-top:-100px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3 is-centered">Visual Results</h2>
+        </div>
+      </div>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-comparison.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        LGVI compared with baseline models for referring video inpainting.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop" style="margin-top:-50px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-referring.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        More results for referring video inpainting.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop" style="margin-top:-50px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-interactive.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-interactive2.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        LGVI+ results for interactive video inpainting.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- /Results -->
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code></code></pre>
+  </div>
+</section>
+<!-- /BibTeX -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. Thanks for their excellent work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
