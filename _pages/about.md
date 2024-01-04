@@ -34,6 +34,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 
 ## Selected Publications
 
+<!-- LGVI -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -50,6 +51,22 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 </div>
 </div>
 
+<!-- OV Survey -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/OV-survey.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880)
+
+**Jianzong Wu\***, Xiangtai Li\*, Shilin Xu\*, Haobo Yuan, Henghui Ding, Xia Li, Jiangning Zhang, Yunhai Tong, Xudong Jiang, Bernard Ghanem, Dacheng Tao
+
+[**Code**](https://github.com/jianzongwu/Awesome-Open-Vocabulary)
+
+- A survey on open vocabulary learning.
+
+</div>
+</div>
+
+<!-- CGG -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/CGG.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
@@ -60,6 +77,21 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 [**Code**](https://github.com/jianzongwu/betrayed-by-captions)
 
 - Query-based open vocabulary segmentation aided by caption generation.
+
+</div>
+</div>
+
+<!-- R-RIS -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2022</div><img src='images/papers/R-RIS.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554)
+
+**Jianzong Wu**, Xiangtai Li, Xia Li, Henghui Ding, Yunhai Tong, Dacheng Tao
+
+[**Code**](https://github.com/jianzongwu/robust-ref-seg)
+
+- Novel robust referring image segmentation (R-RIS) task, dataset, and model.
 
 </div>
 </div>
