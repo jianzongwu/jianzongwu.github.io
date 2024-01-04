@@ -52,7 +52,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 </div>
 
 <!-- OV Survey -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICCV 2023</div><img src='images/papers/OV-survey.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/OV-survey.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880)
