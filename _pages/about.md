@@ -24,7 +24,10 @@ My research interest focuses on multi-modal learning, including feature alignmen
 
 # 🔥 News
 
-- *2023.07*: &nbsp;🎉🎉 CGG is accepted by ICCV-2023.
+- *2024.02*: &nbsp;🎉🎉 Towards Language-Driven Video Inpainting via Multimodal Large Language Models is accepted by CVPR!
+- *2024.02*: &nbsp;🎉🎉 Towards Robust Referring Image Segmentation is accepted by TIP!
+- *2024.01*: &nbsp;🎉🎉 Towards Open Vocabulary Learning: A Survey is accepted by TPAMI!
+- *2023.07*: &nbsp;🎉🎉 CGG is accepted by ICCV-2023!
 
 # 📝 Publications 
 
@@ -35,10 +38,10 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 ## Selected Publications
 
 <!-- LGVI -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2024</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Towards Language-Driven Video Inpainting via Multimodal Large Language Models](pass)
+[Towards Language-Driven Video Inpainting via Multimodal Large Language Models](https://arxiv.org/abs/2401.10226)
 
 **Jianzong Wu**, Xiangtai Li, Chenyang Si, Shangchen Zhou, Jingkang Yang, Jiangning Zhang, Yining Li, Kai Chen, Yunhai Tong, Zewei Liu, Chen Change Loy
 
@@ -52,7 +55,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 </div>
 
 <!-- OV Survey -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv</div><img src='images/papers/OV-survey.jpg' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">TPAMI</div><img src='images/papers/OV-survey.jpg' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880)
@@ -82,7 +85,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 </div>
 
 <!-- R-RIS -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2022</div><img src='images/papers/R-RIS.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">TIP</div><img src='images/papers/R-RIS.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554)
