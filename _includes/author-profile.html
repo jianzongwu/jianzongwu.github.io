@@ -103,8 +103,6 @@
       {% if author.vine %}
         <li><a href="https://vine.co/u/{{ author.vine }}"><i class="fab fa-fw fa-vine" aria-hidden="true"></i> Vine</a></li>
       {% endif %}
-      {% if author.semanticscholar %}
-        <li><a href="{{ author.semanticscholar }}"><i class="fas fa-fw fa-book-open"></i> Semantic Scholar</a></li>
       {% if author.googlescholar %}
         <li><a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i> Google Scholar</a></li>
       {% endif %}
@@ -200,8 +198,6 @@
       {% if author.vine %}
         <a href="https://vine.co/u/{{ author.vine }}"><i class="fab fa-fw fa-vine" aria-hidden="true"></i></a>
       {% endif %}
-      {% if author.semanticscholar %}
-        <a href="{{ author.semanticscholar }}"><i class="fas fa-fw fa-book-open"></i></a>
       {% if author.googlescholar %}
         <a href="{{ author.googlescholar }}"><i class="fas fa-fw fa-graduation-cap"></i></a>
       {% endif %}
