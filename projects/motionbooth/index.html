@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="MotionBooth: Motion-Aware Customized Text-to-Video Generation">
+  <meta name="keywords" content="Text-to-Video Generation, Multimodal Learning, Customized Generation, Motion Control">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MotionBooth: Motion-Aware Customized Text-to-Video Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">MotionBooth: Motion-Aware Customized Text-to-Video Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jianzongwu.github.io">Jianzong Wu</a><sup>1,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://lxtgh.github.io">Xiangtai Li</a><sup>2,3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zengyh1900.github.io/">Yanhong Zeng</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zhangzjn.github.io/">Jiangning Zhang</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://qianyuzqy.github.io/">Qianyu Zhou</a><sup>5</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://github.com/ly015">Yining Li</a><sup>3</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ">Yunhai Tong</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="https://chenkai.site/">Kai Chen</a><sup>3</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Peking University</span>
+            <span class="author-block"><sup>2</sup>S-Lab, Nanyang Technological University</span>
+            <span class="author-block"><sup>3</sup>Shanghai AI Laboratory</span>
+            <span class="author-block"><sup>4</sup>Zhejiang University</span>
+            <span class="author-block"><sup>5</sup>Shanghai Jiao Tong University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link. -->
+              <span class="link-block">
+                <a href="TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://youtu.be/iuH5iqLk5VQ?si=O05IiRwnTiU73FZK"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper video. -->
+<section class="hero is-small">
+  <div class="columns is-centered has-text-centered"  style="margin-top: -10px; margin-bottom: 20px;">
+    <div class="column is-three-fifths">
+      <h4 class="title is-3">TL;DR: MotionBooth is a innovative framework designed for animating customized subjects with precise control over both object and camera movements.</h4>
+      <div class="publication-video">
+        <iframe width="276" height="256" src="https://www.youtube.com/embed/iuH5iqLk5VQ?si=RJdz2CdxO_eUWrKR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Paper video.   -->
+
+<!-- Abstract. -->
+<section class="hero is-light">
+  <div class="container is-max-desktop ">
+    <div class="columns is-centered has-text-centered" style="margin-top: 10px; margin-bottom: 0px;">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            In this work, we present MotionBooth, an innovative framework designed for animating customized subjects with precise control over both object and camera movements. By leveraging a few images of a specific object, we efficiently fine-tune a text-to-video model to capture the object's shape and attributes accurately. Our approach presents subject region loss and video preservation loss to enhance the subject's learning performance, along with a subject token cross-attention loss to integrate the customized subject with motion control signals. Additionally, we propose training-free techniques for managing subject and camera motions during inference. In particular, we utilize cross-attention map manipulation to govern subject motion and introduce a novel latent shift module for camera movement control as well. MotionBooth excels in preserving the appearance of subjects while simultaneously controlling the motions in generated videos. Extensive quantitative and qualitative evaluations demonstrate the superiority and effectiveness of our method. Models and codes will be made publicly available.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Abstract. -->
+
+<!-- Method. -->
+<section class="section" style="margin-top:-50px; margin-bottom:-50px;">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3 is-centered">LGVI Framework</h2>
+            <div class="publication-img">
+              <img id="architecture" src="./static/images/method.png" style="width:1000px; margin-top:10px;margin-bottom:10px;"/>
+            </div>
+          </div>
+        </div>
+        <p>
+          The overall pipeline of MotionBooth. We first fine-tune a T2V model on the subject. This procedure incorporates subject region loss, video preservation loss, and subject token cross-attention loss. During inference, we control the camera movement with a novel latent shift module. At the same time, we manipulate the cross-attention maps to govern the subject motion.
+        </p>
+    </div>
+  </div>
+</section>
+<!-- Method  -->
+
+<!-- Results -->
+<section>
+  <div class="container is-max-desktop" style="margin-top:-100px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3 is-centered">Results Visualization</h2>
+        </div>
+      </div>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-comparison-both1.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-comparison-both2.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        MotionBooth compared with baseline models for motion-aware customized video generation.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop" style="margin-top:-50px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/result-comparison-camera1.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        MotionBooth compared with baseline models for camera control.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container is-max-desktop" style="margin-top:-50px; margin-bottom:-50px;">
+    <div class="hero-body">
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/more-results1.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/more-results2.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/more-results3.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/more-results4.mp4" type="video/mp4">
+      </video>
+      <video id="result-comparison" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/more-results5.mp4" type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        More results for of MotionBooth.
+      </h2>
+    </div>
+  </div>
+</section>
+<!-- /Results -->
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>TODO</code></pre>
+  </div>
+</section>
+<!-- /BibTeX -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. Thanks for their excellent work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
