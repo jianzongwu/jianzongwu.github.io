@@ -36,6 +36,22 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 \* means equal contribution.
 
 ## Selected Publications
+<!-- MotionBooth -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[MotionBooth: Motion-Aware Customized Text-to-Video Generation](TODO)
+
+**Jianzong Wu**, Xiangtai Li, Yanhong Zeng, Jiangning Zhang, Qianyu Zhou, Yining Li, Yunhai Tong, Kai Chen
+
+[**Project**](https://jianzongwu.github.io/projects/motionbooth)
+|
+[**Code**](https://github.com/jianzongwu/MotionBooth)
+
+- We present MotionBooth, an innovative framework designed for animating customized subjects with precise control over both object and camera movements.
+
+</div>
+</div>
 
 <!-- LGVI -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2024</div><img src='images/papers/LGVI.png' alt="sym" width="100%"></div></div>
@@ -108,5 +124,5 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 <!-- # 💬 Invited Talks -->
 
 # 💻 Internships
-- *2023.11 - now*, Shanghai Artificial Intelligence Laboratory, mentored by [Dr. Yining Li](https://scholar.google.com.hk/citations?user=y_cp1sUAAAAJ&hl=en) and [Dr. Xiangtai Li](https://scholar.google.com/citations?user=FL3ReD0AAAAJ).
+- *2023.11 - now*, Shanghai Artificial Intelligence Laboratory, mentored by [Dr. Yining Li](https://scholar.google.com.hk/citations?user=y_cp1sUAAAAJ&hl=en), [Dr. Jingbo Wang](https://wangjingbo1219.github.io/), and [Dr. Xiangtai Li](https://scholar.google.com/citations?user=FL3ReD0AAAAJ).
 - *2020.10 - 2021.09*, Search Technology Center Asia (STCA), Microsoft, mentored by [Dr. Congrui Huang](https://scholar.google.com/citations?user=-ETO4kgAAAAJ) and [Dr. Yujing Wang](https://scholar.google.com/citations?user=YgL4rywAAAAJ)
