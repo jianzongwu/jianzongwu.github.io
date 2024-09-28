@@ -37,7 +37,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 
 ## Selected Publications
 <!-- MotionBooth -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2024 Spotlight</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [MotionBooth: Motion-Aware Customized Text-to-Video Generation](TODO)
