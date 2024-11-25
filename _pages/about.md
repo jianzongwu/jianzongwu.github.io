@@ -33,13 +33,12 @@ I am looking for motivated collaborators and support from industry partners. Ple
 - *2024.01*: &nbsp;🎉🎉 [Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880) is accepted by TPAMI!
 - *2023.07*: &nbsp;🎉🎉 [CGG](https://arxiv.org/abs/2301.00805) is accepted by ICCV-2023!
 
-# 📝 Publications 
+# 📝 Selected Publications 
 
 <!-- Full publications including arXiv papers can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN) -->
 
-\* means equal contribution.
+<!-- \* means equal contribution. -->
 
-## Selected Publications
 <!-- MotionBooth -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2024 Spotlight</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
