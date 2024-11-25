@@ -43,7 +43,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2024 Spotlight</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[MotionBooth: Motion-Aware Customized Text-to-Video Generation](TODO)
+[MotionBooth: Motion-Aware Customized Text-to-Video Generation](https://arxiv.org/abs/2406.17758)
 
 **Jianzong Wu**, Xiangtai Li, Yanhong Zeng, Jiangning Zhang, Qianyu Zhou, Yining Li, Yunhai Tong, Kai Chen
 
