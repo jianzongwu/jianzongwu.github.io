@@ -31,7 +31,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 - *2024.02*: &nbsp;🎉🎉 [LGVI](https://jianzongwu.github.io/projects/rovi/) is accepted by CVPR!
 - *2024.02*: &nbsp;🎉🎉 [Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554) is accepted by TIP!
 - *2024.01*: &nbsp;🎉🎉 [Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880) is accepted by TPAMI!
-- *2023.07*: &nbsp;🎉🎉 [CGG]((https://arxiv.org/abs/2301.00805) is accepted by ICCV-2023!
+- *2023.07*: &nbsp;🎉🎉 [CGG](https://arxiv.org/abs/2301.00805) is accepted by ICCV-2023!
 
 # 📝 Publications 
 
