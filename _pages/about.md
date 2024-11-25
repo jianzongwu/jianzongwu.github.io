@@ -17,21 +17,25 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am **Jianzong Wu (吴健宗)** and I am a **PhD Student** at [School of Intelligence Science and Technology](https://www.cis.pku.edu.cn/), [Peking University (PKU)](https://www.pku.edu.cn/), advised by [Prof. Yunhai Tong](https://scholar.google.com/citations?hl=zh-CN&user=T4gqdPkAAAAJ). Previously, I obtained my bachelor's degree at [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/).
+Hi, I am **Jianzong Wu (吴健宗)**, a **PhD Student** at [School of Intelligence Science and Technology](https://www.cis.pku.edu.cn/), [Peking University (PKU)](https://www.pku.edu.cn/), advised by [Prof. Yunhai Tong](https://scholar.google.com/citations?hl=zh-CN&user=T4gqdPkAAAAJ). Previously, I obtained my bachelor's degree at [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/). I work closely with [Dr. Xiangtai Li](https://lxtgh.github.io/) from NTU, [Dr. Jingbo Wang](https://wangjingbo1219.github.io/) from CUHK (MMLAB), and [Yanhong Zeng](https://zengyh1900.github.io/) from SAI.
 
-My research interest focuses on multi-modal learning, including feature alignment, scene understanding and content generation. So far, I have conducted research works on referring image segmentation, open vocabulary image segmentation, text-to-image editting task, multi-modal large language models, as well as several related fields.
+My research interests focus on leveraging AIGC technologies to create practical application tools that can improve people's daily lives and drive innovations in academia.
+My primary research areas include multimodal learning and controllable generation of images, videos, and artistic creations.
+
+I am looking for motivated collaborators and support from industry partners. Please contact me through [email](jzwu@stu.pku.edu.cn).
 
 
 # 🔥 News
 
-- *2024.02*: &nbsp;🎉🎉 Towards Language-Driven Video Inpainting via Multimodal Large Language Models is accepted by CVPR!
-- *2024.02*: &nbsp;🎉🎉 Towards Robust Referring Image Segmentation is accepted by TIP!
-- *2024.01*: &nbsp;🎉🎉 Towards Open Vocabulary Learning: A Survey is accepted by TPAMI!
-- *2023.07*: &nbsp;🎉🎉 CGG is accepted by ICCV-2023!
+- *2024.09*: &nbsp;🎉🎉 [MotionBooth](https://jianzongwu.github.io/projects/motionbooth) is accepted by NeurIPS 2024 as spotlight!
+- *2024.02*: &nbsp;🎉🎉 [LGVI](https://jianzongwu.github.io/projects/rovi/) is accepted by CVPR!
+- *2024.02*: &nbsp;🎉🎉 [Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554) is accepted by TIP!
+- *2024.01*: &nbsp;🎉🎉 [Towards Open Vocabulary Learning: A Survey](https://arxiv.org/abs/2306.15880) is accepted by TPAMI!
+- *2023.07*: &nbsp;🎉🎉 [CGG]((https://arxiv.org/abs/2301.00805) is accepted by ICCV-2023!
 
 # 📝 Publications 
 
-Full publications including arXiv papers can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN)
+<!-- Full publications including arXiv papers can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN) -->
 
 \* means equal contribution.
 
@@ -48,7 +52,7 @@ Full publications including arXiv papers can be seen [here](https://scholar.goog
 |
 [**Code**](https://github.com/jianzongwu/MotionBooth)
 
-- We present MotionBooth, an innovative framework designed for animating customized subjects with precise control over both object and camera movements.
+- Let's animate customized subjects with precise control over both object and camera movements!
 
 </div>
 </div>
