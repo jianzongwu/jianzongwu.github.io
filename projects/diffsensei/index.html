@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation">
+  <meta name="keywords" content="Text-to-Image Generation, Manga Generation, Customized Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-2 publication-title">DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://jianzongwu.github.io">Jianzong Wu</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              Chao Tang<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://wangjingbo1219.github.io/">Jingbo Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://zengyh1900.github.io/">Yanhong Zeng</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://lxtgh.github.io/">Xiangtai Li</a><sup>3</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ">Yunhai Tong</a><sup>1</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Peking University</span>
+            <span class="author-block"><sup>2</sup>Shanghai AI Laboratory</span>
+            <span class="author-block"><sup>3</sup>Nanyang Technological University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Paper Link. -->
+              <span class="link-block">
+                <a href="TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>Paper (Coming Soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/jianzongwu/DiffSensei"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/jianzongwu/MangaZero"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-archive"></i>
+                  </span>
+                  <span>MangaZero Dataset</span>
+                </a>
+              </span>
+              <!-- Demo Link. -->
+              <span class="link-block">
+                <a href="TODO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-edit"></i>
+                  </span>
+                  <span>Demo (Coming Soon)</span>
+                </a>
+              <br/>
+              <!-- Page results pdf Link. -->
+              <span class="link-block">
+                <a href="static/pdfs/page_results.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Full Page Results</span>
+                </a>
+              <!-- Real human results pdf Link. -->
+              <span class="link-block">
+                <a href="static/pdfs/nobel_prize.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Long Story</span>
+                </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Introduction Video -->
+<section class="hero is-small" style="margin-top: -20px; margin-bottom: 10px;">
+  <div class="columns is-centered has-text-centered">
+    <div class="column is-three-fifths">
+      <div class="publication-video">
+        <iframe width="276" height="256" src="https://www.youtube.com/embed/TLJ0MYZmoXc?si=2xtSUGaxTjXxzqKM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Introduction Video -->
+
+<!-- Abstract. -->
+<section class="hero is-light">
+  <div class="container is-max-desktop ">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3" style="margin-top: 20px">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Story visualization, the task of creating visual narratives from textual descriptions, has seen progress with text-to-image generation models. However, these models often lack effective control over character appearances and interactions, particularly in multi-character scenes. To address these limitations, we propose a new task: customized manga generation and introduce DiffSensei, an innovative framework specifically designed for generating manga with dynamic multi-character control. DiffSensei integrates a diffusion-based image generator with a multimodal large language model (MLLM) that acts as a text-compatible identity adapter. Our approach employs masked cross-attention to seamlessly incorporate character features, enabling precise layout control without direct pixel transfer. Additionally, the MLLM-based adapter adjusts character features to align with panel-specific text cues, allowing flexible adjustments in character expressions, poses, and actions. We also introduce MangaZero, a large-scale dataset tailored to this task, containing 43,264 manga pages and 427,147 annotated panels, supporting the visualization of varied character interactions and movements across sequential frames. Extensive experiments demonstrate that DiffSensei outperforms existing models, marking a significant advancement in manga generation by enabling text-adaptable character customization. The code, model, and dataset will be open-sourced to the community.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Abstract. -->
+
+<!-- Page Results -->
+<section>
+  <div class="container is-four-fifths">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3 is-centered">Gallary</h2>
+        </div>
+      </div>
+      <div>
+        <img id="page_results1" src="./static/images/results_page/1.png" style="width:100%; margin-top:10px;margin-bottom:10px;"/>
+      </div>
+      <div>
+        <img id="page_results1" src="./static/images/results_page/2.png" style="width:100%; margin-top:10px;margin-bottom:10px;"/>
+      </div>
+      <div>
+        <img id="page_results1" src="./static/images/results_page/3.png" style="width:100%; margin-top:10px;margin-bottom:10px;"/>
+      </div>
+      <div>
+        <img id="page_results1" src="./static/images/results_page/4.png" style="width:100%; margin-top:10px;margin-bottom:10px;"/>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /Page Results -->
+
+<!-- Real Human Story -->
+<section>
+  <div class="container is-four-fifths">
+    <div class="hero-body">
+      <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3 is-centered">A story about LeCun, Hinton, and Benjio winning the Novel Prize...</h2>
+        </div>
+      </div>
+      <div>
+        <img id="page_results1" src="./static/images/nobel_prize/image.png" style="width:100%; margin-top:10px;margin-bottom:10px;"/>
+      </div>
+      <div>
+        For better look at the dialogs, please download the PDF version at the top of the webpage.
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Real Human Story -->
+
+
+
+<!-- Method. -->
+<section class="section" style="margin-top:-50px; margin-bottom:-50px;">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <div class="columns is-centered has-text-centered">
+            <div class="column">
+                <h2 class="title is-3 is-centered">Model Architecture</h2>
+                <div class="publication-img">
+                  <img id="architecture" src="./static/images/model_architecture.png" style="width:1000px; margin-top:10px;margin-bottom:10px;"/>
+                </div>
+            </div>
+            </div>
+            <p>
+            The architecture of DiffSensei. In the first stage, we train a multi-character customized manga image generation model with layout control. The dialog embedding is added to the noised latent after the first convolution layer. All the parameters in the U-Net and ieature extractor are trained. In the second stace, we finetune LoRA and resampler weights of an MLLM to adapt the source characte features corresponding to the text prompt. We use the model in the first stage as the image generator and freeze its weights.
+            </p>
+        </div>
+    </div>
+</section>
+<!-- Method  -->
+
+<!-- BibTeX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>article{wu2024motionbooth,
+      title={MotionBooth: Motion-Aware Customized Text-to-Video Generation},
+      author={Jianzong Wu and Xiangtai Li and Yanhong Zeng and Jiangning Zhang and Qianyu Zhou and Yining Li and Yunhai Tong and Kai Chen},
+      journal={NeurIPS},
+      year={2024},
+    }</code></pre>
+  </div>
+</section>
+<!-- /BibTeX -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website source code based on the <a href="https://nerfies.github.io/"> Nerfies</a> project page. Thanks for their excellent work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
