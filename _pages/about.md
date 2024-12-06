@@ -39,6 +39,23 @@ I am looking for motivated collaborators and support from industry partners. Ple
 
 <!-- \* means equal contribution. -->
 
+<!-- DiffSensei -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation](TODO)
+
+**Jianzong Wu**, Chao Tang, Jingbo Wang, Yanhong Zeng, Xiangtai Li, Yunhai Tong
+
+[**Project**](https://jianzongwu.github.io/projects/diffsensei)
+|
+[**Code**](https://github.com/jianzongwu/DiffSensei)
+
+- DiffSensei can generate controllable black-and-white manga panels with flexible character adaptation.
+
+</div>
+</div>
+
 <!-- MotionBooth -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2024 Spotlight</div><img src='images/papers/MotionBooth.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
