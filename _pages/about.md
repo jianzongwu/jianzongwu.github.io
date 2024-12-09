@@ -50,8 +50,6 @@ I am looking for motivated collaborators and support from industry partners. Ple
 [**Project**](https://jianzongwu.github.io/projects/diffsensei)
 |
 [**Code**](https://github.com/jianzongwu/DiffSensei)
-|
-[**Demo**](https://huggingface.co/spaces/jianzongwu/DiffSensei)
 
 - DiffSensei can generate controllable black-and-white manga panels with flexible character adaptation.
 
