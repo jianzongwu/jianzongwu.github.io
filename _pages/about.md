@@ -43,7 +43,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation](TODO)
+[DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation](https://arxiv.org/abs/2412.07589)
 
 **Jianzong Wu**, Chao Tang, Jingbo Wang, Yanhong Zeng, Xiangtai Li, Yunhai Tong
 
