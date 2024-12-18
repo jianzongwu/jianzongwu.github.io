@@ -36,9 +36,9 @@ I am looking for motivated collaborators and support from industry partners. Ple
 
 # 📝 Selected Publications 
 
-<!-- Full publications including arXiv papers can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN) -->
+Full publications can be seen [here](https://scholar.google.com/citations?user=Q_fbCwkAAAAJ&hl=zh-CN)
 
-<!-- \* means equal contribution. -->
+\* means equal contribution.
 
 <!-- DiffSensei -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
