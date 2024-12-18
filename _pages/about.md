@@ -138,12 +138,13 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 <!-- # 🎖 Honors and Awards -->
 
-# 📖 Educations
+# 📖 Educations_
 - *2021.07 - now*, PhD Student in Peking University (PKU) 
 - *2017.09 - 2021.07*, Bachelor in University of Science and Technology of China (USTC)
 
 <!-- # 💬 Invited Talks -->
 
 # 💻 Internships
-- *2023.11 - now*, Shanghai Artificial Intelligence Laboratory, mentored by [Dr. Yining Li](https://scholar.google.com.hk/citations?user=y_cp1sUAAAAJ&hl=en), [Dr. Jingbo Wang](https://wangjingbo1219.github.io/), and [Dr. Xiangtai Li](https://scholar.google.com/citations?user=FL3ReD0AAAAJ).
+- *2024.12 - now*, Kling Team，Kuaishou，mentored by [Haotian Yang](https://yanght321.github.io/).
+- *2023.11 - 2024.12*, Shanghai Artificial Intelligence Laboratory, mentored by [Dr. Yining Li](https://scholar.google.com.hk/citations?user=y_cp1sUAAAAJ&hl=en), [Dr. Jingbo Wang](https://wangjingbo1219.github.io/), and [Dr. Xiangtai Li](https://scholar.google.com/citations?user=FL3ReD0AAAAJ).
 - *2020.10 - 2021.09*, Search Technology Center Asia (STCA), Microsoft, mentored by [Dr. Congrui Huang](https://scholar.google.com/citations?user=-ETO4kgAAAAJ) and [Dr. Yujing Wang](https://scholar.google.com/citations?user=YgL4rywAAAAJ)
