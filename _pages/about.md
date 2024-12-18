@@ -27,6 +27,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 
 # 🔥 News
 
+- *2024.12*: &nbsp;🎉🎉 I have started my internship at Kling Team, Kuaishou!
 - *2024.09*: &nbsp;🎉🎉 [MotionBooth](https://jianzongwu.github.io/projects/motionbooth) is accepted by NeurIPS 2024 as spotlight!
 - *2024.02*: &nbsp;🎉🎉 [LGVI](https://jianzongwu.github.io/projects/rovi/) is accepted by CVPR!
 - *2024.02*: &nbsp;🎉🎉 [Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554) is accepted by TIP!
