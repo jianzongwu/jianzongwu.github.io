@@ -27,6 +27,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 
 # 🔥 News
 
+- *2025.03*: &nbsp;🎉🎉 Congradulations! Three papers were accepted by CVPR 2025!
 - *2024.09*: &nbsp;🎉🎉 [MotionBooth](https://jianzongwu.github.io/projects/motionbooth) is accepted by NeurIPS 2024 as spotlight!
 - *2024.02*: &nbsp;🎉🎉 [LGVI](https://jianzongwu.github.io/projects/rovi/) is accepted by CVPR!
 - *2024.02*: &nbsp;🎉🎉 [Towards Robust Referring Image Segmentation](https://arxiv.org/abs/2209.09554) is accepted by TIP!
@@ -40,7 +41,7 @@ I am looking for motivated collaborators and support from industry partners. Ple
 <!-- \* means equal contribution. -->
 
 <!-- DiffSensei -->
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [DiffSensei: Bridging Multi-Modal LLMs and Diffusion Models for Customized Manga Generation](https://arxiv.org/abs/2412.07589)
