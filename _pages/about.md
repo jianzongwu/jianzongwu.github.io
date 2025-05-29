@@ -17,7 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-Hi, I am **Jianzong Wu (吴健宗)**, a **PhD Student** at [School of Intelligence Science and Technology](https://www.cis.pku.edu.cn/), [Peking University (PKU)](https://www.pku.edu.cn/), advised by [Prof. Yunhai Tong](https://scholar.google.com/citations?hl=zh-CN&user=T4gqdPkAAAAJ). Previously, I obtained my bachelor's degree at [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/). I work closely with [Dr. Xiangtai Li](https://lxtgh.github.io/) from NTU, [Dr. Jingbo Wang](https://wangjingbo1219.github.io/) from CUHK (MMLAB), and [Yanhong Zeng](https://zengyh1900.github.io/) from SAI.
+Hi, I am **Jianzong Wu (吴健宗)**, a **PhD Student** at [School of Intelligence Science and Technology](https://www.cis.pku.edu.cn/), [Peking University (PKU)](https://www.pku.edu.cn/), advised by [Prof. Yunhai Tong](https://scholar.google.com/citations?hl=zh-CN&user=T4gqdPkAAAAJ). Previously, I obtained my bachelor's degree at [University of Science and Technology of China (USTC)](https://www.ustc.edu.cn/). I work closely with [Dr. Xiangtai Li](https://lxtgh.github.io/) from NTU, [Dr. Jingbo Wang](https://wangjingbo1219.github.io/) from CUHK (MMLAB), [Dr. Yanhong Zeng](https://zengyh1900.github.io/) from SAI, and [Dr. Xin Tao](https://www.xtao.website/) from Kling team..
 
 My research interests focus on leveraging AIGC technologies to create practical application tools that can improve people's daily lives and drive innovations in academia.
 My primary research areas include multimodal learning and controllable generation of images, videos, and artistic creations.
