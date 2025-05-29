@@ -22,7 +22,7 @@ Hi, I am **Jianzong Wu (吴健宗)**, a **PhD Student** at [School of Intelligen
 My research interests focus on leveraging AIGC technologies to create practical application tools that can improve people's daily lives and drive innovations in academia.
 My primary research areas include multimodal learning and controllable generation of images, videos, and artistic creations.
 
-I am looking for motivated collaborators and support from industry partners. Please contact me through [email](jzwu@stu.pku.edu.cn).
+I will graduate in 2026 Summer. I'm looking for a job. Please contact me through [email](jzwu@stu.pku.edu.cn).
 
 
 # 🔥 News
