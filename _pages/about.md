@@ -41,6 +41,18 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 \* means equal contribution.
 
+<!-- VMoBA -->
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/VMoBA.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[VMoBA: Mixture-of-Block Attention for Video Diffusion Models](TODO)
+
+**Jianzong Wu**, Liang Hou, Haotian Yang, Xin Tao, Ye Tian, Pengfei Wan, Di Zhang, Yunhai Tong
+
+[**Code**](https://github.com/KwaiVGI/VMoBA)<img src="https://img.shields.io/github/stars/KwaiVGI/VMoBA?style=flat&amp;logo=github&amp;logoColor=black&amp;labelColor=beige&amp;color=green" alt="KwaiVGI/VMoBA Repo">
+
+- The first sparse attention mechanism based on MoBA, designed for video diffusion model **training**.
+
 <!-- DiffSensei -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -51,7 +63,7 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 [**Project**](https://jianzongwu.github.io/projects/diffsensei)
 |
-[**Code**](https://github.com/jianzongwu/DiffSensei)
+[**Code**](https://github.com/jianzongwu/DiffSensei)<img src="https://img.shields.io/github/stars/jianzongwu/DiffSensei?style=flat&amp;logo=github&amp;logoColor=black&amp;labelColor=beige&amp;color=green" alt="jianzongwu/DiffSensei Repo">
 
 - DiffSensei can generate controllable black-and-white manga panels with flexible character adaptation.
 
@@ -68,7 +80,7 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 [**Project**](https://jianzongwu.github.io/projects/motionbooth)
 |
-[**Code**](https://github.com/jianzongwu/MotionBooth)
+[**Code**](https://github.com/jianzongwu/MotionBooth)<img src="https://img.shields.io/github/stars/jianzongwu/MotionBooth?style=flat&amp;logo=github&amp;logoColor=black&amp;labelColor=beige&amp;color=green" alt="jianzongwu/MotionBooth Repo">
 
 - Let's animate customized subjects with precise control over both object and camera movements!
 
@@ -85,7 +97,7 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 [**Project**](https://jianzongwu.github.io/projects/rovi/)
 |
-[**Code**](https://github.com/jianzongwu/Language-Driven-Video-Inpainting)
+[**Code**](https://github.com/jianzongwu/Language-Driven-Video-Inpainting)<img src="https://img.shields.io/github/stars/jianzongwu/Language-Driven-Video-Inpainting?style=flat&amp;logo=github&amp;logoColor=black&amp;labelColor=beige&amp;color=green" alt="jianzongwu/Language-Driven-Video-Inpainting Repo">
 
 - Novel language-driven video inpainting task, dataset, and model.
 
@@ -100,7 +112,7 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 **Jianzong Wu\***, Xiangtai Li\*, Shilin Xu\*, Haobo Yuan, Henghui Ding, Xia Li, Jiangning Zhang, Yunhai Tong, Xudong Jiang, Bernard Ghanem, Dacheng Tao
 
-[**Code**](https://github.com/jianzongwu/Awesome-Open-Vocabulary)
+[**Code**](https://github.com/jianzongwu/Awesome-Open-Vocabulary)<img src="https://img.shields.io/github/stars/jianzongwu/Awesome-Open-Vocabulary?style=flat&amp;logo=github&amp;logoColor=black&amp;labelColor=beige&amp;color=green" alt="jianzongwu/Awesome-Open-Vocabulary Repo">
 
 - A survey on open vocabulary learning.
 
