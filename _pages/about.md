@@ -53,6 +53,9 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 
 - The first sparse attention mechanism based on MoBA, designed for video diffusion model **training**.
 
+</div>
+</div>
+
 <!-- DiffSensei -->
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/papers/DiffSensei.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
