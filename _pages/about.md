@@ -45,7 +45,7 @@ Full publications can be seen [here](https://scholar.google.com/citations?user=Q
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">In Submission</div><img src='images/papers/VMoBA.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[VMoBA: Mixture-of-Block Attention for Video Diffusion Models](TODO)
+[VMoBA: Mixture-of-Block Attention for Video Diffusion Models](https://arxiv.org/abs/2506.23858)
 
 **Jianzong Wu**, Liang Hou, Haotian Yang, Xin Tao, Ye Tian, Pengfei Wan, Di Zhang, Yunhai Tong
 
