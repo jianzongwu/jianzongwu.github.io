@@ -1,0 +1,2400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Does Hearing Help Seeing? Investigating Audio-Video Joint Denoising for Video Generation">
+    <meta name="keywords" content="Video Generation, Audio-Video Joint Generation, Cross-Modality">
+
+    <title>Does Hearing Help Seeing? Investigating Audio-Video Joint Denoising for Video Generation</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- Hover Text Box -->
+    <style>
+        .tooltip-container {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 350px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 100;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.875rem;
+            white-space: normal;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <!-- Hover Text Box -->
+
+</head>
+
+<body>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <main id="main-content">
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <!-- TODO: Replace with your paper title -->
+                            <h1 class="title is-2 publication-title">Does Hearing Help Seeing? <br> Investigating
+                                Audio-Video Joint Denoising for Video Generation</h1>
+                            <div class="is-size-5 publication-authors">
+                                <!-- TODO: Replace with your paper authors and their personal links -->
+                                <span class="author-block">
+                                    <a href="https://jianzongwu.github.io">Jianzong Wu</a><sup>1,2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://github.com/Firefly-lh">Hao Lian</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    Dachao Hao<sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://lxtgh.github.io">Xiangtai Li</a><sup>3</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://tyfeld.github.io/">Ye Tian</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://github.com/Shi-qingyu">Qingyu Shi</a><sup>1</sup>,
+                                </span>
+                                <span class="author-block">
+                                    Biaolong Chen<sup>2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    Hao Jiang<sup>2</sup>,
+                                </span>
+                                <span class="author-block">
+                                    <a href="https://scholar.google.com/citations?user=T4gqdPkAAAAJ">Yunhai
+                                        Tong</a><sup>1</sup>,
+                                </span>
+                            </div>
+
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block"><sup>1</sup>Peking University</span>
+                                <span class="author-block"><sup>2</sup>Alibaba Group</span>
+                                <span class="author-block"><sup>3</sup>S-Lab, Nanyang Technological University</span>
+                            </div>
+
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- Paper Link. -->
+                                    <span class="link-block">
+                                        <a href="Wait to be filled!"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="ai ai-arxiv"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <!-- Code Link. -->
+                                    <span class="link-block">
+                                        <a href="Wait to be filled!"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                    <!-- Video Link. -->
+                                    <span class="link-block">
+                                        <a href="https://www.youtube.com/watch?v=ZEndGB32Cvg"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-youtube"></i>
+                                            </span>
+                                            <span>Video</span>
+                                        </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Paper video. -->
+        <section class="hero is-small">
+            <div class="columns is-centered has-text-centered" style="margin-top: -10px; margin-bottom: 20px;">
+                <div class="column is-three-fifths">
+                    <p class="title is-4">6-min Introduction Video</p>
+                    <div class="publication-video">
+                        <iframe width="1039" height="584" src="https://www.youtube.com/embed/ZEndGB32Cvg" title="Does Hearing Help Seeing? Investigating Audio-Video Joint Denoising for Video Generation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Paper video.   -->
+
+        <!-- Abstract. -->
+        <section class="hero is-light">
+            <div class="container is-max-desktop ">
+                <div class="columns is-centered has-text-centered" style="margin-top: 10px; margin-bottom: 0px;">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Abstract (TL;DR)</h2>
+                        <div class="content has-text-justified">
+                            <p>
+                                <strong>The Problem:</strong> T2V models often produce hallucinations, exaggerated motion, or "contact avoidance" (where objects don't actually touch) because they lack a grounding in physical laws.<br>
+                                <strong>The Hypothesis:</strong> Audio is inherently causal (e.g., a thud implies a collision). Training on audio should regularize video dynamics.<br>
+                                <strong>The Method:</strong> We propose AVFullDiT, a parameter-efficient framework that:
+                                <ui>
+                                    <li>Fuses pre-trained T2V and T2A models.</li>
+                                    <li>Uses AVFull-Attention for bidirectional information flow.</li>
+                                    <li>Uses AVSyncRoPE to align the different time scales of audio and video latents.</li>
+                                </ui><br>
+                                <strong>The Result:</strong> Compared to a T2V-only baseline, our T2AV model generates more physically plausible motion and better object interactions, proving that <strong>hearing does help seeing</strong>!.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Abstract. -->
+
+        <!-- Method. -->
+        <section class="section" style="margin-top:-50px; margin-bottom:-50px;">
+            <div class="container is-max-desktop">
+                <div class="hero-body">
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column">
+                            <h2 class="title is-3 is-centered">The Framework</h2>
+                            <div class="publication-img">
+                                <img id="architecture" src="./static/images/method.png"
+                                    style="width:1000px; margin-top:10px;margin-bottom:10px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        The architecture of AVFullDiT and Audio-Video Full-Attention. (a) AVFullDiT reuses pre-trained T2V/T2A early towers and stacks joint blocks that predict video/audio velocities under a unified flow-matching loss. (b) AVFull-Attention performs symmetric MHSA over the concatenated audio–video token sequence using the video width as the joint dimension; audio projections are expanded with small adapter matrices. The attended sequence is split and projected back per modality.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- Method  -->
+
+        <!-- Results -->
+        <section>
+            <div class="container is-max-desktop" style="margin-top:-100px; margin-bottom:-50px;">
+                <div class="hero-body">
+                    <div class="columns is-centered has-text-centered mb-4">
+                        <div class="column">
+                            <h2 class="title is-2 is-centered">Results Visualization</h2>
+                        </div>
+                    </div>
+
+                    <div
+                        style="border: 2px solid #ff3864; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+                        <h3 class="title is-3 font-bold has-text-centered mb-4">(T2AV) Tempered Motion -- (T2V) Excessive Motion</h3>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the movement
+                                    amplitude of gun is excessively large.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/cap_gun_shooting/8ALwSP590T8_000016_000026_3.0_6.5_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a black handgun and firing
+                                    it towards the right side of the frame, with a bright flash visible from the muzzle.
+                                    The gun is then held steady without firing for a few moments. The person fires the
+                                    gun again, causing the muzzle to flash once more. The gun is held steady again
+                                    without firing. The background consists of a wooden cabinet with shelves and a plain
+                                    wall. <br> <span style="color: #ff3864;">Audio prompt: The audio features a person
+                                        firing a gun, producing a
+                                        sharp, loud gunshot followed by a series of rapid, sharp clicks.</span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/cap_gun_shooting/8ALwSP590T8_000016_000026_3.0_6.5_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a black handgun and firing
+                                    it towards the right side of the frame, with a bright flash visible from the muzzle.
+                                    The gun is then held steady without firing for a few moments. The person fires the
+                                    gun again, causing the muzzle to flash once more. The gun is held steady again
+                                    without firing. The background consists of a wooden cabinet with shelves and a plain
+                                    wall.</span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the movement
+                                    amplitude of gun is excessively large.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/cap_gun_shooting/qZ4awmlj8Ns_000036_000046_7.0_10.0_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a black handgun in their
+                                    right hand, pointing it towards the left side of the frame, with a background of
+                                    leafless trees and a gray sky. The person pulls the trigger, and a bright flash of
+                                    light is seen coming from the gun's barrel. The gun is then held steady again, with
+                                    no visible changes in the background. Another flash of light is seen from the gun's
+                                    barrel. The gun is held steady once more, with no visible changes in the background.
+                                    The gun is held steady again, with no visible changes in the background. A small
+                                    flash of light is seen from the gun's barrel. The gun is held steady once more, with
+                                    no visible changes in the background.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a distinct
+                                        gunshot sound, followed by a series of rapid, sharp clicks, allled by a
+                                        background of muted, ambient noise that suggests an outdoor setting with trees.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/cap_gun_shooting/qZ4awmlj8Ns_000036_000046_7.0_10.0_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a black handgun in their
+                                    right hand, pointing it towards the left side of the frame, with a background of
+                                    leafless trees and a gray sky. The person pulls the trigger, and a bright flash of
+                                    light is seen coming from the gun's barrel. The gun is then held steady again, with
+                                    no visible changes in the background. Another flash of light is seen from the gun's
+                                    barrel. The gun is held steady once more, with no visible changes in the background.
+                                    The gun is held steady again, with no visible changes in the background. A small
+                                    flash of light is seen from the gun's barrel. The gun is held steady once more, with
+                                    no visible changes in the background.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, playing the strings
+                                    too fast makes the video look unnatural. </p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/playing_violin_fiddle/16DCCYYdgmg_000030_000040_0.0_10.0_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing a blue shirt is standing in a
+                                    room with a window in the background, playing a violin. The person holds the violin
+                                    with their left hand and uses a bow with their right hand to play the instrument.
+                                    The room appears to be well-lit with natural light coming through the window. The
+                                    person's movements are consistent as they play the violin, indicating a continuous
+                                    performance.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features features a
+                                        violin playing a melody in the key of E major, with a tempo of 100.0 bpm, and a
+                                        4/4 time signature, accompanied by a background of music.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/playing_violin_fiddle/16DCCYYdgmg_000030_000040_0.0_10.0_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing a blue shirt is standing in a
+                                    room with a window in the background, playing a violin. The person holds the violin
+                                    with their left hand and uses a bow with their right hand to play the instrument.
+                                    The room appears to be well-lit with natural light coming through the window. The
+                                    person's movements are consistent as they play the violin, indicating a continuous
+                                    performance.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, playing the strings
+                                    too fast makes the video look unnatural. </p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/playing_violin_fiddle/Di1F8GUvEtg_000030_000040_1.0_8.5_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: An elderly man with a beard is seated in a
+                                    room, playing the violin. He is wearing a striped sweater and is holding the violin
+                                    with his left hand while using a bow with his right hand to play. The background
+                                    includes a bookshelf with various items and a closed door. The man continues to play
+                                    the violin throughout the video, maintaining a consistent posture and focus on his
+                                    instrument.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features includes a man
+                                        playing the violin with a bow, producing a melodic tune, accompanied by
+                                        background music that enhances the overall sound, creating a harmonious and
+                                        pleasant auditory experience.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/playing_violin_fiddle/Di1F8GUvEtg_000030_000040_1.0_8.5_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: An elderly man with a beard is seated in a
+                                    room, playing the violin. He is wearing a striped sweater and is holding the violin
+                                    with his left hand while using a bow with his right hand to play. The background
+                                    includes a bookshelf with various items and a closed door. The man continues to play
+                                    the violin throughout the video, maintaining a consistent posture and focus on his
+                                    instrument.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the windmill is
+                                    spinning too fast. </p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/wind_noise/mFYkW5mvjSo_000000_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a wind turbine mounted on a
+                                    pole against a clear blue sky. The turbine's propeller starts spinning slowly and
+                                    gradually increases in speed. The propeller continues to spin faster, reaching a
+                                    more rapid pace. The propeller spins at a high speed, maintaining its rotation. The
+                                    background remains consistent with a clear blue sky and a tree branch visible on the
+                                    right side.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a consistent,
+                                        rhythmic sound of a horse trotting, with a steady pace and a clear, resonant
+                                        tone that suggests a hard surface beneath its hooves.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source src="./static/videos/results/VGGSound/wind_noise/mFYkW5mvjSo_000000_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a wind turbine mounted on a
+                                    pole against a clear blue sky. The turbine's propeller starts spinning slowly and
+                                    gradually increases in speed. The propeller continues to spin faster, reaching a
+                                    more rapid pace. The propeller spins at a high speed, maintaining its rotation. The
+                                    background remains consistent with a clear blue sky and a tree branch visible on the
+                                    right side.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        style="border: 2px solid #ff3864; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+                        <h3 class="title is-3 font-bold has-text-centered mb-4">(T2AV) Tempered Motion -- (T2V) Static Video</h3>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the waves stirred up
+                                    by the water flow are relatively inconspicuous.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/4aM_AgHh8xc_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video captures a coastal scene with a
+                                    lighthouse standing on a rocky cliff, surrounded by a clear sky transitioning from
+                                    day to dusk. The ocean waves are seen crashing against the rocks in the foreground,
+                                    creating white foam and splashes. The lighthouse, with a white tower and a
+                                    red-roofed building beside it, remains a constant focal point throughout the frames.
+                                    The sky gradually darkens, and a faint moon is visible in the upper right part of
+                                    the sky.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features the sound of a
+                                        large wave crashing, creating a powerful and intense auditory experience with a
+                                        deep, resonant tone.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/4aM_AgHh8xc_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video captures a coastal scene with a
+                                    lighthouse standing on a rocky cliff, surrounded by a clear sky transitioning from
+                                    day to dusk. The ocean waves are seen crashing against the rocks in the foreground,
+                                    creating white foam and splashes. The lighthouse, with a white tower and a
+                                    red-roofed building beside it, remains a constant focal point throughout the frames.
+                                    The sky gradually darkens, and a faint moon is visible in the upper right part of
+                                    the sky.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the waves stirred up
+                                    by the water flow are relatively inconspicuous.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/5PyLgaqvYhA_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video begins with a black screen. The scene
+                                    gradually brightens, revealing a rocky coastline with waves crashing against the
+                                    rocks. The waves continue to crash against the rocks, creating white foam and
+                                    splashes. The background shows a dark sky, indicating it is either early morning or
+                                    late evening. The waves persistently hit the rocks, showcasing the dynamic
+                                    interaction between the sea and the shoreline.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        low-pitched humming sound, reminiscent of a distant engine.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/5PyLgaqvYhA_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video begins with a black screen. The scene
+                                    gradually brightens, revealing a rocky coastline with waves crashing against the
+                                    rocks. The waves continue to crash against the rocks, creating white foam and
+                                    splashes. The background shows a dark sky, indicating it is either early morning or
+                                    late evening. The waves persistently hit the rocks, showcasing the dynamic
+                                    interaction between the sea and the shoreline.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the waves stirred up
+                                    by the water flow are relatively inconspicuous.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/EOoSkW99qLA_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a rocky shoreline with various
+                                    sizes of stones and boulders, with waves continuously crashing against the rocks,
+                                    creating white foam. The background features a calm sea extending to the horizon
+                                    under a cloudy sky. The waves consistently hit the rocks, causing the foam to spread
+                                    and recede with each wave.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features the sound of a
+                                        large wave crashing, creating a powerful and immersive auditory experience.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/EOoSkW99qLA_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a rocky shoreline with various
+                                    sizes of stones and boulders, with waves continuously crashing against the rocks,
+                                    creating white foam. The background features a calm sea extending to the horizon
+                                    under a cloudy sky. The waves consistently hit the rocks, causing the foam to spread
+                                    and recede with each wave.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the waves stirred up
+                                    by the water flow are relatively inconspicuous.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/r3AJ2v3D42E_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a series of waves crashing
+                                    against a rocky shoreline. The waves are foamy and turbulent as they approach the
+                                    rocks, creating splashes and white foam. The rocks are jagged and covered with some
+                                    seaweed, indicating a natural coastal environment. The waves continue to hit the
+                                    rocks, causing water to splash up and spread out. The background remains consistent
+                                    with the rocky shoreline and the continuous movement of the waves.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features the sound of
+                                        waves crashing, creating a rhythmic and soothing tone with a low pitch,
+                                        accompanied by the distant sound of a train horn in the background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/splashing_water/r3AJ2v3D42E_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a series of waves crashing
+                                    against a rocky shoreline. The waves are foamy and turbulent as they approach the
+                                    rocks, creating splashes and white foam. The rocks are jagged and covered with some
+                                    seaweed, indicating a natural coastal environment. The waves continue to hit the
+                                    rocks, causing water to splash up and spread out. The background remains consistent
+                                    with the rocky shoreline and the continuous movement of the waves.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the water flow is
+                                    very small, and the dynamics are barely perceptible.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/waterfall_burbling/aj8VJ0i-Cr4_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a serene natural setting with a
+                                    small stream flowing over moss-covered rocks, surrounded by lush green foliage. The
+                                    text 'Nature Sounds' is prominently displayed in the center of the frame, overlaying
+                                    the scene. The water gently cascades down the rocks, creating a soothing and calming
+                                    atmosphere.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous
+                                        sound of water flowing steadily, creating a soothing and rhythmic ambiance.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/Landscape/waterfall_burbling/aj8VJ0i-Cr4_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a serene natural setting with a
+                                    small stream flowing over moss-covered rocks, surrounded by lush green foliage. The
+                                    text 'Nature Sounds' is prominently displayed in the center of the frame, overlaying
+                                    the scene. The water gently cascades down the rocks, creating a soothing and calming
+                                    atmosphere.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the background scene
+                                    is too static and unnatural.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chipmunk_chirping/bkTfflP2kmQ_000006_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A small, striped animal, likely a chipmunk, is
+                                    perched on a branch surrounded by green leaves and foliage. The animal remains
+                                    mostly still, with only slight movements of its head and body. The background is a
+                                    blurred mix of green and brown, indicating a natural, outdoor setting. The animal's
+                                    fur is detailed with dark stripes running along its back and sides. The animal's
+                                    eyes are large and black, and it appears to be observing its surroundings.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a repetitive,
+                                        high-pitched squeaking sound, likely from a small animal, with a consistent
+                                        rhythm and a background of faint, indistinct noises.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chipmunk_chirping/bkTfflP2kmQ_000006_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A small, striped animal, likely a chipmunk, is
+                                    perched on a branch surrounded by green leaves and foliage. The animal remains
+                                    mostly still, with only slight movements of its head and body. The background is a
+                                    blurred mix of green and brown, indicating a natural, outdoor setting. The animal's
+                                    fur is detailed with dark stripes running along its back and sides. The animal's
+                                    eyes are large and black, and it appears to be observing its surroundings.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the scene is overly
+                                    static, with no changes in the hand gestures for playing saxophone; <br> In T2AV
+                                    video,
+                                    the hand gestures roughly match the audio.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/playing_saxophone/ZkzYad4UiRM_000030_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person dressed in black is holding a white,
+                                    intricately designed musical instrument, which appears to be a flute, and is playing
+                                    it. The background shows a room with a bed and some objects, including a box and a
+                                    bag, placed on a surface. The person's fingers are moving along the instrument,
+                                    pressing the keys as they play.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a saxophone
+                                        playing a slow, melancholic melody with a low pitch, accompanied by a background
+                                        of a soft, ambient electronic music that has a rhythmic pattern, creating a
+                                        somber and reflective atmosphere.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/playing_saxophone/ZkzYad4UiRM_000030_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person dressed in black is holding a white,
+                                    intricately designed musical instrument, which appears to be a flute, and is playing
+                                    it. The background shows a room with a bed and some objects, including a box and a
+                                    bag, placed on a surface. The person's fingers are moving along the instrument,
+                                    pressing the keys as they play.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the camera movement
+                                    is relatively static;
+                                    <br> In T2AV video, the camera movement is relatively natural.
+                                </p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/reversing_beeps/YoxIVk-Zumw_000009_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video begins with a close-up of a car's
+                                    speedometer and digital display, showing the odometer reading 135560 km and the trip
+                                    meter at 145.2 km. The speedometer and trip meter remain constant throughout the
+                                    video. The oil pressure and battery warning lights turn on, followed by the
+                                    temperature warning light. The fuel gauge starts to move, indicating a change in the
+                                    fuel level. The camera gradually zooms in on the illuminated warning lights and the
+                                    moving fuel gauge.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a male voice
+                                        speaking in Portuguese, with a tone that suggests he is instructing or
+                                        explaining something, possibly in a casual or conversational manner. The pitch
+                                        of his voice is moderate, and the rhythm is steady, indicating a normal speaking
+                                        pace. There are no significant variations in
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/reversing_beeps/YoxIVk-Zumw_000009_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt:The video begins with a close-up of a car's
+                                    speedometer and digital display, showing the odometer reading 135560 km and the trip
+                                    meter at 145.2 km. The speedometer and trip meter remain constant throughout the
+                                    video. The oil pressure and battery warning lights turn on, followed by the
+                                    temperature warning light. The fuel gauge starts to move, indicating a change in the
+                                    fuel level. The camera gradually zooms in on the illuminated warning lights and the
+                                    moving fuel gauge.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="border: 2px solid #ff3864; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+                        <h3 class="title is-3 font-bold has-text-centered mb-4">(T2AV) Contact with Sound -- (T2V) Contact Avoidance</h3>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the hammer does not
+                                    properly make contact with the desktop.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/hammering/g1xMvAh1ifE_000066_000076_2.5_5.5_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: On a wooden surface, there are several nails
+                                    scattered on the left side, and a person wearing gloves is holding a hammer in their
+                                    right hand. The person repeatedly strikes a nail on the wooden surface, causing wood
+                                    chips and dust to scatter around. As the hammering continues, the nail gradually
+                                    bends and eventually falls to the left side of the surface.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a distinct
+                                        hammeringing sound, characterized by a sharp, resonant tone, and a rhythmic
+                                        pattern, set against a backdrop of faint, ambient noise.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/hammering/g1xMvAh1ifE_000066_000076_2.5_5.5_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: On a wooden surface, there are several nails
+                                    scattered on the left side, and a person wearing gloves is holding a hammer in their
+                                    right hand. The person repeatedly strikes a nail on the wooden surface, causing wood
+                                    chips and dust to scatter around. As the hammering continues, the nail gradually
+                                    bends and eventually falls to the left side of the surface.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the knife and the
+                                    whetstone are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/AGOtAd4xBhk_000154_000164_2.0_4.1_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is seen sharpening a knife on a
+                                    sharpening stone, moving the knife back and forth with both hands. The sharpening
+                                    stone is secured on a table with a white cloth underneath. The person continues to
+                                    sharpen the knife, maintaining a consistent motion. After completing the sharpening
+                                    process, the person lifts the knife away from the stone. The sharpening stone
+                                    remains on the table as the person moves the knife out of the frame.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        high-pitched, metallic scraping sound, accompanied by a soft, ambient background
+                                        noise that suggests a workshop or industrial setting.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/AGOtAd4xBhk_000154_000164_2.0_4.1_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is seen sharpening a knife on a
+                                    sharpening stone, moving the knife back and forth with both hands. The sharpening
+                                    stone is secured on a table with a white cloth underneath. The person continues to
+                                    sharpen the knife, maintaining a consistent motion. After completing the sharpening
+                                    process, the person lifts the knife away from the stone. The sharpening stone
+                                    remains on the table as the person moves the knife out of the frame.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the knife and the
+                                    whetstone are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/SNndVYIMO-s_000158_000168_1.0_3.1_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is seen sharpening a knife on a
+                                    whetstone labeled 'Whetstone #400 Grit' in a tray filled with water. The person
+                                    moves the knife back and forth across the whetstone, applying consistent pressure
+                                    and motion. The background includes various sharpening tools and a wooden block.
+                                    After several passes, the person lifts the knife and inspects it closely.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        rhythmic scraping sound, likely from a knife being sharpened on a whetstone,
+                                        with a consistent tone and pitch, accompanied by faint background noises that
+                                        suggest a workshop setting.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/SNndVYIMO-s_000158_000168_1.0_3.1_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is seen sharpening a knife on a
+                                    whetstone labeled 'Whetstone #400 Grit' in a tray filled with water. The person
+                                    moves the knife back and forth across the whetstone, applying consistent pressure
+                                    and motion. The background includes various sharpening tools and a wooden block.
+                                    After several passes, the person lifts the knife and inspects it closely.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    chair are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-02-16-17-35-07_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a yellow chair with perforated
+                                    holes in the backrest and a black armrest, set against a wooden background. A wooden
+                                    stick appears and hits the armrest of the chair. The stick then moves across the
+                                    backrest of the chair, continuing to hit it. The stick moves back and forth across
+                                    the backrest multiple times.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        sharp, repetitive whip sounds, creating a rhythmic pattern against a relatively
+                                        quiet background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-02-16-17-35-07_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a yellow chair with perforated
+                                    holes in the backrest and a black armrest, set against a wooden background. A wooden
+                                    stick appears and hits the armrest of the chair. The stick then moves across the
+                                    backrest of the chair, continuing to hit it. The stick moves back and forth across
+                                    the backrest multiple times.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    keyboard are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-24-23-56-19_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a desk with two computer
+                                    monitors, a black keyboard, a black mouse, a box of tissues, a ceramic mug, and some
+                                    papers. In the fifth frame, a hand holding a wooden stick appears from the left side
+                                    of the frame. The hand starts moving the stick in a conducting motion over the
+                                    keyboard and mouse. The stick continues to move back and forth over the keyboard and
+                                    mouse, simulating conducting motions. The hand and stick move across the desk,
+                                    continuing the conducting motion. The stick moves back to the left side of the
+                                    frame, and the hand is no longer visible.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct, sharp snapping sounds, each with a brief echo, occurring at regular
+                                        intervals, set against a relatively quiet background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-24-23-56-19_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a desk with two computer
+                                    monitors, a black keyboard, a black mouse, a box of tissues, a ceramic mug, and some
+                                    papers. In the fifth frame, a hand holding a wooden stick appears from the left side
+                                    of the frame. The hand starts moving the stick in a conducting motion over the
+                                    keyboard and mouse. The stick continues to move back and forth over the keyboard and
+                                    mouse, simulating conducting motions. The hand and stick move across the desk,
+                                    continuing the conducting motion. The stick moves back to the left side of the
+                                    frame, and the hand is no longer visible.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    chair are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-18-25-59_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a light blue office chair with
+                                    black armrests and wheels, positioned in a room with a blue floor and other office
+                                    chairs in the background. A hand holding a wooden stick appears and starts hitting
+                                    the seat of the chair repeatedly. The hand continues to hit the chair in a
+                                    consistent manner, moving the stick back and forth across the seat.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct, sharp thumping sounds, likely from a hard object hitting a surface,
+                                        with a consistent rhythm and a slightly dark, reverberant tone.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-18-25-59_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a light blue office chair with
+                                    black armrests and wheels, positioned in a room with a blue floor and other office
+                                    chairs in the background. A hand holding a wooden stick appears and starts hitting
+                                    the seat of the chair repeatedly. The hand continues to hit the chair in a
+                                    consistent manner, moving the stick back and forth across the seat.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    table are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-20-01-17_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a round wooden table with a
+                                    metal base placed on a blue carpeted floor. A hand holding a stick appears from the
+                                    right side of the frame and begins to hit the table surface repeatedly. The stick
+                                    makes contact with the table multiple times, creating a rhythmic pattern. The
+                                    background remains consistent throughout the video, with no other objects or changes
+                                    in the environment.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        rhythmic, repetitive sounds, likely from a hammer striking a hard surface,
+                                        creating a consistent and steady beat.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-20-01-17_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a round wooden table with a
+                                    metal base placed on a blue carpeted floor. A hand holding a stick appears from the
+                                    right side of the frame and begins to hit the table surface repeatedly. The stick
+                                    makes contact with the table multiple times, creating a rhythmic pattern. The
+                                    background remains consistent throughout the video, with no other objects or changes
+                                    in the environment.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    cabinet are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-20-14-13_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a close-up of a metallic
+                                    cabinet with a smooth surface and a drawer. A wooden stick appears and repeatedly
+                                    hits the cabinet surface from the right side. The stick continues to hit the cabinet
+                                    in a consistent manner, creating a rhythmic motion. The background includes a wooden
+                                    floor and a metal structure on the left side.
+
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a distinct
+                                        metallic clanging sound, which is sharp and resonant, occurring at regular
+                                        intervals, creating a rhythmic pattern against a relatively quiet background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-28-20-14-13_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a close-up of a metallic
+                                    cabinet with a smooth surface and a drawer. A wooden stick appears and repeatedly
+                                    hits the cabinet surface from the right side. The stick continues to hit the cabinet
+                                    in a consistent manner, creating a rhythmic motion. The background includes a wooden
+                                    floor and a metal structure on the left side.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    game console are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-29-01-03-37_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a game console with a
+                                    controller on top, placed on a wooden shelf. A hand holding a drumstick appears and
+                                    starts tapping the buttons on the controller. The hand continues to tap different
+                                    buttons on the controller with the drumstick. The background remains consistent with
+                                    the wooden shelf and the game console throughout the video.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct, sharp clapping sounds, each with a brief pause, creating a rhythmic
+                                        pattern against a quiet background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-29-01-03-37_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a game console with a
+                                    controller on top, placed on a wooden shelf. A hand holding a drumstick appears and
+                                    starts tapping the buttons on the controller. The hand continues to tap different
+                                    buttons on the controller with the drumstick. The background remains consistent with
+                                    the wooden shelf and the game console throughout the video.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    box are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-30-01-38-59_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A cardboard box labeled 'SCOTTFOLD' is placed
+                                    on a wooden surface next to a wall. A hand holding a wooden stick appears from the
+                                    left side of the frame and starts tapping the box. The hand continues to tap the box
+                                    with the stick in a rhythmic manner.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct, sharp thuds against a hard surface, likely wood, with a clear and
+                                        resonant tone, maintaining a consistent rhythm throughout.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-03-30-01-38-59_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A cardboard box labeled 'SCOTTFOLD' is placed
+                                    on a wooden surface next to a wall. A hand holding a wooden stick appears from the
+                                    left side of the frame and starts tapping the box. The hand continues to tap the box
+                                    with the stick in a rhythmic manner.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick and the
+                                    water fountain are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-09-18-04-02-32-529_denoised_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a wall-mounted water fountain
+                                    with two drinking fountains, one above the other, in a room with a speckled floor
+                                    and beige walls. A person enters the frame from the left, holding a wooden stick.
+                                    The person uses the stick to push the button located between the two drinking
+                                    fountains. The person continues to push the stick against the button, ensuring it is
+                                    pressed. The person then moves the stick to the button on the lower drinking
+                                    fountain. The person presses the button on the lower drinking fountain with the
+                                    stick.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct, sharp metallic clanks, each with a clear and resonant tone, occurring
+                                        at regular intervals, creating a rhythmic pattern against a relatively quiet
+                                        background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/TheGreatestHits/2015-09-18-04-02-32-529_denoised_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a wall-mounted water fountain
+                                    with two drinking fountains, one above the other, in a room with a speckled floor
+                                    and beige walls. A person enters the frame from the left, holding a wooden stick.
+                                    The person uses the stick to push the button located between the two drinking
+                                    fountains. The person continues to push the stick against the button, ensuring it is
+                                    pressed. The person then moves the stick to the button on the lower drinking
+                                    fountain. The person presses the button on the lower drinking fountain with the
+                                    stick.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the bowl and the
+                                    hammer are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/singing_bowl/pj9fkZUmMIA_000013_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is holding a brass bowl with small
+                                    perforations on its surface against a plain white background. A red object, likely a
+                                    mallet, appears from the right side and moves towards the bowl. The red object makes
+                                    contact with the bowl and begins to strike it. The red object continues to strike
+                                    the bowl, producing sound. The red object is then moved away from the bowl. The hand
+                                    continues to hold the bowl steady as the red object is no longer in contact with it.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a single,
+                                        resonant bell sound with a clear, high-pitched tone that rings out and gradually
+                                        fades, accompanied by a soft, ambient background noise that remains constant
+                                        throughout.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/singing_bowl/pj9fkZUmMIA_000013_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is holding a brass bowl with small
+                                    perforations on its surface against a plain white background. A red object, likely a
+                                    mallet, appears from the right side and moves towards the bowl. The red object makes
+                                    contact with the bowl and begins to strike it. The red object continues to strike
+                                    the bowl, producing sound. The red object is then moved away from the bowl. The hand
+                                    continues to hold the bowl steady as the red object is no longer in contact with it.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the hand and the
+                                    disc are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/disc_scratching/L76AuckUoe8_000006_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A pair of hands is seen operating a Pioneer DJ
+                                    controller on a wooden surface, with the left hand adjusting the knobs and sliders
+                                    while the right hand manipulates the jog wheels. The controller features two jog
+                                    wheels, various buttons, and a display screen, with the brand 'Pioneer DJ' and
+                                    'rekordbox' visible on the front. The hands continue to move rhythmically, adjusting
+                                    the controls and spinning the jog wheels, indicating a DJ mixing session. The
+                                    background remains consistent, showing a wooden surface with some cables connected
+                                    to the controller.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a rhythmic
+                                        scratching sound, likely from a DJ, with a consistent tempo and a background of
+                                        soft, indistinct music.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/disc_scratching/L76AuckUoe8_000006_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A pair of hands is seen operating a Pioneer DJ
+                                    controller on a wooden surface, with the left hand adjusting the knobs and sliders
+                                    while the right hand manipulates the jog wheels. The controller features two jog
+                                    wheels, various buttons, and a display screen, with the brand 'Pioneer DJ' and
+                                    'rekordbox' visible on the front. The hands continue to move rhythmically, adjusting
+                                    the controls and spinning the jog wheels, indicating a DJ mixing session. The
+                                    background remains consistent, showing a wooden surface with some cables connected
+                                    to the controller.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the electric
+                                    chainsaw and the tree are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/BZCgbtdNH6Q_000030_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a green cap, brown sweater, and
+                                    blue jeans is using a red chainsaw to cut a log on a wooden platform in a forested
+                                    area. He continues to saw through the log, making steady progress. After completing
+                                    the cut, he lifts the chainsaw and steps back, moving away from the log. The
+                                    background consists of trees and foliage, indicating a forest setting.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        high-pitched whine from a chainsaw cutting through wood, with a background of
+                                        wind and wind sounds, creating a sense of an outdoor work environment.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/BZCgbtdNH6Q_000030_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a green cap, brown sweater, and
+                                    blue jeans is using a red chainsaw to cut a log on a wooden platform in a forested
+                                    area. He continues to saw through the log, making steady progress. After completing
+                                    the cut, he lifts the chainsaw and steps back, moving away from the log. The
+                                    background consists of trees and foliage, indicating a forest setting.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the electric
+                                    chainsaw and the tree are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/EwoQIa82vZc_000030_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing orange protective pants and a
+                                    gray shirt is seen on a grassy area, holding a chainsaw. The person positions the
+                                    chainsaw on a log that is lying on the ground, with a cut section already visible at
+                                    the end of the log. The person begins to saw the log, moving the chainsaw forward
+                                    steadily. Sawdust is visible as the chainsaw cuts through the log. The person
+                                    continues to saw the log, making progress through the wood.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        high-pitched whirring sound, characteristic of a chainsaw in operation, with a
+                                        consistent rhythm and a background of faint, indistinct noise.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/EwoQIa82vZc_000030_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing orange protective pants and a
+                                    gray shirt is seen on a grassy area, holding a chainsaw. The person positions the
+                                    chainsaw on a log that is lying on the ground, with a cut section already visible at
+                                    the end of the log. The person begins to saw the log, moving the chainsaw forward
+                                    steadily. Sawdust is visible as the chainsaw cuts through the log. The person
+                                    continues to saw the log, making progress through the wood.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the knife
+                                    and vegetables are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/eating_with_cutlery/PiV3CexoH5I_000310_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing a watch and a patterned shirt
+                                    is slicing a cylindrical food item on a white cutting board using a knife. The
+                                    cutting board is placed on a wooden countertop, and there is a bamboo sushi rolling
+                                    mat next to it. Various ingredients and containers, including a jar of seasoning and
+                                    a bowl of chopped items, are visible on the countertop. The person continues to
+                                    slice the food item into smaller pieces, making precise cuts with the knife.
+                                    <br> <span style="color: #ff3864;">Audio prompt: A woman speaks with a neutral tone
+                                        and moderate pitch, saying "Can I say hmm it's not beautiful but it is
+                                        beautiful", while in the background, there are sounds of cutl cutl, a woman's
+                                        voice, and a man's voice.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/eating_with_cutlery/PiV3CexoH5I_000310_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing a watch and a patterned shirt
+                                    is slicing a cylindrical food item on a white cutting board using a knife. The
+                                    cutting board is placed on a wooden countertop, and there is a bamboo sushi rolling
+                                    mat next to it. Various ingredients and containers, including a jar of seasoning and
+                                    a bowl of chopped items, are visible on the countertop. The person continues to
+                                    slice the food item into smaller pieces, making precise cuts with the knife.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the stick
+                                    and guiro are not in proper contact.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/playing_guiro/_QFLqsl_m4c_000103_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a room with tiled walls and a wooden door, a
+                                    person wearing a green shirt and shorts stands behind a makeshift drum setup, which
+                                    includes a metal stand and a white circular object with a black pattern. The person
+                                    is seen playing the drums with both hands, moving them rhythmically up and down. The
+                                    room has a bed with a blue blanket and a pillow with red and white text on it, and
+                                    there are coats hanging on the door.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a lively Latin
+                                        American music track with a fast tempo, characterized by a prominent horn
+                                        section, likely trumpets, playing a rhythmic melody, accompanied by a male
+                                        vocalist singing in a high-pitched, energetic style, with a background of a
+                                        steady, upbeat drum rhythm and occasional guitar strums.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/playing_guiro/_QFLqsl_m4c_000103_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a room with tiled walls and a wooden door, a
+                                    person wearing a green shirt and shorts stands behind a makeshift drum setup, which
+                                    includes a metal stand and a white circular object with a black pattern. The person
+                                    is seen playing the drums with both hands, moving them rhythmically up and down. The
+                                    room has a bed with a blue blanket and a pillow with red and white text on it, and
+                                    there are coats hanging on the door.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the hand didn't
+                                    press the button properly.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/running_electric_fan/6csLbEosfuk_000047_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is seen turning the knob on a fan's
+                                    control panel, which has a dial with markings from 0 to 3. The hand rotates the knob
+                                    from the 0 position to the 3 position. The knob is then left in the 3 position, and
+                                    the hand moves away. The background consists of the fan's metal blades and a logo
+                                    'creoven TV' in the top right corner.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a male speaker
+                                        with a neutral tone and moderate pitch, delivering a speech in German about
+                                        maintaining a cubic meter per hour without exceeding the 75 decibel mark, with a
+                                        consistent rhythm and no notable variations in background noises.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/running_electric_fan/6csLbEosfuk_000047_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is seen turning the knob on a fan's
+                                    control panel, which has a dial with markings from 0 to 3. The hand rotates the knob
+                                    from the 0 position to the 3 position. The knob is then left in the 3 position, and
+                                    the hand moves away. The background consists of the fan's metal blades and a logo
+                                    'creoven TV' in the top right corner.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div
+                        style="border: 2px solid #ff3864; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem;">
+                        <h3 class="title is-3 font-bold has-text-centered mb-4">Physics Commonsenses</h3>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the vertical
+                                    knife-sharpening method violates the laws of physics.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/F3rn7mVPQPo_000308_000318_2.0_8.0_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a large knife with a black
+                                    handle and is sharpening it on a yellow and black sharpening stone placed on a beige
+                                    countertop. The person moves the knife back and forth across the sharpening stone,
+                                    applying consistent pressure and maintaining a steady hand. The sharpening stone has
+                                    markings indicating different grit levels, and the person continues to sharpen the
+                                    knife in a repetitive motion. The background consists of a light-colored wall with
+                                    vertical panels, and there is another knife placed on the countertop to the left of
+                                    the sharpening stone.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features the sound of a
+                                        knife being rubbed against a sharpeninging surface, accompanied by a faint
+                                        background hum.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/F3rn7mVPQPo_000308_000318_2.0_8.0_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a large knife with a black
+                                    handle and is sharpening it on a yellow and black sharpening stone placed on a beige
+                                    countertop. The person moves the knife back and forth across the sharpening stone,
+                                    applying consistent pressure and maintaining a steady hand. The sharpening stone has
+                                    markings indicating different grit levels, and the person continues to sharpen the
+                                    knife in a repetitive motion. The background consists of a light-colored wall with
+                                    vertical panels, and there is another knife placed on the countertop to the left of
+                                    the sharpening stone.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, sharpening a knife
+                                    on hand violates the laws of physics.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/tq3Hlgw2ZB0_000180_000190_1.0_3.1_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a tiled kitchen environment, a person
+                                    wearing a red apron is seen holding a large knife on a white cutting board with
+                                    their left hand, which has a gold ring on the ring finger. The person uses their
+                                    right hand to repeatedly scrape the blade of the knife with a sharpening tool,
+                                    moving the tool back and forth along the edge of the knife.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        high-pitched, and rhythmic scratching sound, likely produced by a tool or object
+                                        being scraped against a hard surface, accompanied by a faint background noise
+                                        that could be a distant conversation or ambient kitchen sounds.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/sharpen_knife/tq3Hlgw2ZB0_000180_000190_1.0_3.1_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a tiled kitchen environment, a person
+                                    wearing a red apron is seen holding a large knife on a white cutting board with
+                                    their left hand, which has a gold ring on the ring finger. The person uses their
+                                    right hand to repeatedly scrape the blade of the knife with a sharpening tool,
+                                    moving the tool back and forth along the edge of the knife.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the ball
+                                    disappearing directly violates the laws of physics.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/striking_bowling/p0Y5-_l4D-s_000018_000028_0.0_3.0_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man dressed in black is seen at a bowling
+                                    alley, preparing to bowl. He takes a few steps forward, positioning himself to throw
+                                    the bowling ball. He bends down and swings the ball back. He then releases the ball,
+                                    releasing it towards the bowling lane. The ball rolls down the lane as the man
+                                    follows through with his arm. He stands up straight, watching the ball's progress.
+                                    The background shows multiple bowling lanes with banners overhead, and a score
+                                    display is visible in the bottom right corner of the screen.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a bowling ball
+                                        rolling down the lane, followed by the satisfying sound of pins crashing, all by
+                                        a lively background of music and chatter.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/ALT-Merge/AVSync15/striking_bowling/p0Y5-_l4D-s_000018_000028_0.0_3.0_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man dressed in black is seen at a bowling
+                                    alley, preparing to bowl. He takes a few steps forward, positioning himself to throw
+                                    the bowling ball. He bends down and swings the ball back. He then releases the ball,
+                                    releasing it towards the bowling lane. The ball rolls down the lane as the man
+                                    follows through with his arm. He stands up straight, watching the ball's progress.
+                                    The background shows multiple bowling lanes with banners overhead, and a score
+                                    display is visible in the bottom right corner of the screen.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the car suddenly
+                                    reversing violates the daily rules.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/ambulance_siren/VqczA8N9pqM_000019_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: An ambulance with the word 'AMBULANZA' and
+                                    emergency symbols on its back is driving down a street lined with parked cars on the
+                                    left and a sidewalk on the right. The ambulance continues to move forward, passing
+                                    by various parked vehicles, including sedans and compact cars. The camera follows
+                                    the ambulance as it progresses down the street, maintaining a steady focus on the
+                                    vehicle. The background consists of residential buildings with balconies and
+                                    windows, and the street is marked with a crosswalk at the beginning. The ambulance's
+                                    license plate and emergency contact number are visible on the back. The camera
+                                    gradually zooms in on the ambulance as it moves further down the street. Throughout
+                                    the video, the text 'CAGLIARIMEGGENCY118' is displayed in the bottom right corner of
+                                    the screen.
+                                    <br> <span style="color: #ff3864;">Audio prompt: An emergency vehicle sots is heard,
+                                        characterized by a high-pitched, urgent tone, with a consistent rhythm, and a
+                                        background of urban street noise.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/ambulance_siren/VqczA8N9pqM_000019_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: An ambulance with the word 'AMBULANZA' and
+                                    emergency symbols on its back is driving down a street lined with parked cars on the
+                                    left and a sidewalk on the right. The ambulance continues to move forward, passing
+                                    by various parked vehicles, including sedans and compact cars. The camera follows
+                                    the ambulance as it progresses down the street, maintaining a steady focus on the
+                                    vehicle. The background consists of residential buildings with balconies and
+                                    windows, and the street is marked with a crosswalk at the beginning. The ambulance's
+                                    license plate and emergency contact number are visible on the back. The camera
+                                    gradually zooms in on the ambulance as it moves further down the street. Throughout
+                                    the video, the text 'CAGLIARIMEGGENCY118' is displayed in the bottom right corner of
+                                    the screen.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the position of the
+                                    welding torch is incorrect.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/arc_welding/IbJaOn7K7bM_000426_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing red gloves is welding a metal
+                                    joint, producing bright sparks and intense light. The welding process continues with
+                                    the sparks and light gradually diminishing. The person then removes the welding
+                                    tool, revealing a glowing weld on the metal joint. The person proceeds to remove a
+                                    bolt from the metal joint using their gloved hand.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a continuous,
+                                        high-pitched hissing sound, likely from a spray can, followed by a brief, sharp
+                                        metallic clink, possibly a can hitting a hard surface.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/arc_welding/IbJaOn7K7bM_000426_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person wearing red gloves is welding a metal
+                                    joint, producing bright sparks and intense light. The welding process continues with
+                                    the sparks and light gradually diminishing. The person then removes the welding
+                                    tool, revealing a glowing weld on the metal joint. The person proceeds to remove a
+                                    bolt from the metal joint using their gloved hand.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the
+                                    rotating fan is distorted.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/bathroom_ventilation_fan_running/ZzqHlivBFkc_000954_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is holding a white vent with the brand
+                                    name 'WOLKER' on it, positioned above a white surface. Below the vent, there is a
+                                    white switch and an orange electrical box with wires. The hand presses the switch,
+                                    and the vent starts rotating. The hand continues to press the switch, and the vent
+                                    keeps rotating. The hand releases the switch, and the vent slows down and eventually
+                                    stops rotating.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a distinct click
+                                        sound, likely from a switch or button being pressed, followed by a brief period
+                                        of silence, then another similar click, all throughout the audio.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/bathroom_ventilation_fan_running/ZzqHlivBFkc_000954_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is holding a white vent with the brand
+                                    name 'WOLKER' on it, positioned above a white surface. Below the vent, there is a
+                                    white switch and an orange electrical box with wires. The hand presses the switch,
+                                    and the vent starts rotating. The hand continues to press the switch, and the vent
+                                    keeps rotating. The hand releases the switch, and the vent slows down and eventually
+                                    stops rotating.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the video and audio
+                                    are relatively consistent, achieving good AV-Joint generation.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/beat_boxing/GhwtOMd1eRI_000351_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a white t-shirt with a black
+                                    graphic on the left side is in a park with trees and benches in the background. He
+                                    is speaking and gesturing with his hands, occasionally pointing and moving his arms.
+                                    The background shows people sitting on benches and walking around. The man continues
+                                    to speak and gesture throughout the video.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a beatboxing
+                                        performance with a consistent rhythm and a low-pitched, resonant tone,
+                                        accompanied by a faint background noise that seems to be a soft, ambient hum.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/beat_boxing/GhwtOMd1eRI_000351_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a white t-shirt with a black
+                                    graphic on the left side is in a park with trees and benches in the background. He
+                                    is speaking and gesturing with his hands, occasionally pointing and moving his arms.
+                                    The background shows people sitting on benches and walking around. The man continues
+                                    to speak and gesture throughout the video.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the bell is
+                                    small, and its movement violates the laws of physics. <br> In contrast,
+                                    in the T2AV video, the bell is clear and its movement is synchronized with audio.
+                                </p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cattle_bovinae_cowbell/liKYuKdxZD0_000051_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A brown and white cow with a bell around its
+                                    neck is walking to the right in a grassy field, passing by a barbed wire fence. In
+                                    the background, there is a hotel building with a sign that reads 'HOTEL'. The cow
+                                    continues to walk, moving past a wooden post and further into the field. The camera
+                                    follows the cow's movement, capturing the scenic background of mountains and
+                                    greenery.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features footsteps on
+                                        gravel, a man speaking, and a bicycle bell ringing, with the bell's sound
+                                        becoming more prominent over time.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cattle_bovinae_cowbell/liKYuKdxZD0_000051_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A brown and white cow with a bell around its
+                                    neck is walking to the right in a grassy field, passing by a barbed wire fence. In
+                                    the background, there is a hotel building with a sign that reads 'HOTEL'. The cow
+                                    continues to walk, moving past a wooden post and further into the field. The camera
+                                    follows the cow's movement, capturing the scenic background of mountains and
+                                    greenery.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the human hand
+                                    undergoes deformation.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cell_phone_buzzing/2iLVil7dnro_000204_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a green circuit board with
+                                    both hands, adjusting wires connected to it. The background shows an open electronic
+                                    device with various wires and components. The person continues to adjust the wires,
+                                    ensuring they are properly connected. The person then picks up an object with their
+                                    right hand while still holding the circuit board with their left hand.
+                                    <br> <span style="color: #ff3864;">Audio prompt: A male voice with a German accent
+                                        speaks in a calm tone, delivering the line 'Was den -0 tut dir das nicht,
+                                        bekommst du kein Signal.' The background is quiet with no noticeable ambient
+                                        noise.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cell_phone_buzzing/2iLVil7dnro_000204_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding a green circuit board with
+                                    both hands, adjusting wires connected to it. The background shows an open electronic
+                                    device with various wires and components. The person continues to adjust the wires,
+                                    ensuring they are properly connected. The person then picks up an object with their
+                                    right hand while still holding the circuit board with their left hand.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the generated
+                                    chainsaw shape is incorrect.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/521ilthnvAU_000002_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding an orange and white
+                                    chainsaw while surrounded by green foliage and a building with a tiled roof in the
+                                    background. Smoke begins to appear around the chainsaw, and small flames start to
+                                    ignite. The flames grow larger, and the person uses their right hand to try to
+                                    extinguish the fire. The fire continues to burn intensely, and the person keeps
+                                    attempting to put it out. The flames and smoke become more intense, and the person
+                                    struggles to control the fire. The fire starts to diminish slightly, but it is still
+                                    burning. The person continues to try to extinguish the remaining flames.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a consistent,
+                                        high-pitched, and rhythmic sound of a bicycle wheel spinning, accompanied by a
+                                        faint background noise that seems to be the ambient sound of the environment.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chainsawing_trees/521ilthnvAU_000002_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A person is holding an orange and white
+                                    chainsaw while surrounded by green foliage and a building with a tiled roof in the
+                                    background. Smoke begins to appear around the chainsaw, and small flames start to
+                                    ignite. The flames grow larger, and the person uses their right hand to try to
+                                    extinguish the fire. The fire continues to burn intensely, and the person keeps
+                                    attempting to put it out. The flames and smoke become more intense, and the person
+                                    struggles to control the fire. The fire starts to diminish slightly, but it is still
+                                    burning. The person continues to try to extinguish the remaining flames.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2AV video, girls' hand
+                                    movements when pinching plastic are more accurate and synchronized with the sound.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/child_speech_kit_speaking/bstRSjf_SWU_000080_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A girl is sitting at a round table in a living
+                                    room, which has various small toys and a playset labeled 'Fruit & Veg' on it. She is
+                                    talking while looking at the toys on the table. She reaches out and picks up a blue
+                                    toy package from the table. She examines the toy package closely, turning it around
+                                    in her hands. The background includes a striped armchair, a dining table with
+                                    chairs, and some scattered toys on the floor.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a child speaking
+                                        in English, saying "on to our last basket", with a neutral tone and a pitch
+                                        typical of a young child, accompanied by the sound of crumpling paper in the
+                                        background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/child_speech_kit_speaking/bstRSjf_SWU_000080_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A girl is sitting at a round table in a living
+                                    room, which has various small toys and a playset labeled 'Fruit & Veg' on it. She is
+                                    talking while looking at the toys on the table. She reaches out and picks up a blue
+                                    toy package from the table. She examines the toy package closely, turning it around
+                                    in her hands. The background includes a striped armchair, a dining table with
+                                    chairs, and some scattered toys on the floor.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the meat hasn't
+                                    been cut properly.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chopping_food/Ex8NBjLE-M0_000131_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A chef wearing a white uniform and gloves is
+                                    seen chopping a piece of meat into minced meat using a knife, placing the minced
+                                    meat into a white bowl on a countertop covered with a cloth. The kitchen background
+                                    includes a refrigerator, microwave, and various kitchen utensils. A woman in a red
+                                    top and pink headband stands next to the chef, observing the process. The chef
+                                    continues to mince the meat while explaining, and the subtitles on the screen read
+                                    '鎴戝€戠敤鐨勯噺涓嶉渶瑕佸緢澶? and '浣犺鐢ㄥ灏戝氨鍒ㄥ灏?. The camera then focuses on the chef's face as
+                                    he continues to speak, with the subtitle '灏?浣犺澶氬皯灏卞埁澶氬皯' appearing on the screen.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a conversation
+                                        in a language that sounds like it could be Chinese, with a woman speaking in a
+                                        higher pitch and a man respondinging in a lower pitch, both maintaining a steady
+                                        rhythm, and there are no noticeable background noises.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/chopping_food/Ex8NBjLE-M0_000131_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A chef wearing a white uniform and gloves is
+                                    seen chopping a piece of meat into minced meat using a knife, placing the minced
+                                    meat into a white bowl on a countertop covered with a cloth. The kitchen background
+                                    includes a refrigerator, microwave, and various kitchen utensils. A woman in a red
+                                    top and pink headband stands next to the chef, observing the process. The chef
+                                    continues to mince the meat while explaining, and the subtitles on the screen read
+                                    '鎴戝€戠敤鐨勯噺涓嶉渶瑕佸緢澶? and '浣犺鐢ㄥ灏戝氨鍒ㄥ灏?. The camera then focuses on the chef's face as
+                                    he continues to speak, with the subtitle '灏?浣犺澶氬皯灏卞埁澶氬皯' appearing on the screen.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, The bell didn't sway
+                                    when struck, which violates the laws of physics; <br> As for the T2AV video, the
+                                    bell's
+                                    sway is synchronized with the bell sound.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/church_bell_ringing/ikGYzAVpwNk_000240_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A large bell is suspended and swinging back and
+                                    forth in a structure with wooden beams and metal supports. The bell is attached to a
+                                    metal frame, and a smaller metal object, likely a striker, is also moving in sync
+                                    with the bell's motion. The background shows a brick wall and various metal and
+                                    wooden components, indicating an industrial or historical setting. The bell's motion
+                                    is continuous and rhythmic, with the striker occasionally coming into view as it
+                                    moves past the bell.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a distinct
+                                        church bell ringing, accompanied by a soft, ambient background noise, creating a
+                                        serene and rhythmic atmosphere.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/church_bell_ringing/ikGYzAVpwNk_000240_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A large bell is suspended and swinging back and
+                                    forth in a structure with wooden beams and metal supports. The bell is attached to a
+                                    metal frame, and a smaller metal object, likely a striker, is also moving in sync
+                                    with the bell's motion. The background shows a brick wall and various metal and
+                                    wooden components, indicating an industrial or historical setting. The bell's motion
+                                    is continuous and rhythmic, with the striker occasionally coming into view as it
+                                    moves past the bell.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V movie, the position of
+                                    electronic trimmer is incorrect.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cutting_hair_with_electric_trimmers/4AkrJe-lHDA_000208_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a red polo shirt and a white
+                                    undershirt is standing in a tiled room, holding an electric ear trimmer to his right
+                                    ear. He moves the trimmer back and forth in his ear, carefully grooming the hair.
+                                    The background consists of white tiled walls, and the man continues to trim his ear
+                                    hair methodically.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a man speaking
+                                        in a neutral tone over English, accompanied by the continuous sound of an
+                                        electric shaver buzzing in the background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/cutting_hair_with_electric_trimmers/4AkrJe-lHDA_000208_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A man wearing a red polo shirt and a white
+                                    undershirt is standing in a tiled room, holding an electric ear trimmer to his right
+                                    ear. He moves the trimmer back and forth in his ear, carefully grooming the hair.
+                                    The background consists of white tiled walls, and the man continues to trim his ear
+                                    hair methodically.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V movie, continuous firing
+                                    violates the laws of physics.
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/firing_cannon/Gc_naKiJWuY_000051_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a barren, desert-like environment, a person
+                                    is seen handling a large rifle mounted on a wooden platform. The person removes the
+                                    magazine from the rifle and places it on the platform. The person then lies prone on
+                                    the ground, aiming the rifle equipped with a scope, surrounded by spent bullet
+                                    casings. The person fires the rifle, with visible recoil and dust being kicked up
+                                    from the ground.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a series of
+                                        distinct impact sounds, likely from objects being dropped or hit, interspersed
+                                        with a brief, low-pitched male voice speaking in the background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/firing_cannon/Gc_naKiJWuY_000051_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: In a barren, desert-like environment, a person
+                                    is seen handling a large rifle mounted on a wooden platform. The person removes the
+                                    magazine from the rifle and places it on the platform. The person then lies prone on
+                                    the ground, aiming the rifle equipped with a scope, surrounded by spent bullet
+                                    casings. The person fires the rifle, with visible recoil and dust being kicked up
+                                    from the ground.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the model failed to
+                                    correctly generate the button and the action of pressing it. <br> Besides, in T2AV
+                                    video, the model correctly generated the language "turn on", indicating it possesses
+                                    a certain ability to understand the world</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/opening_or_closing_car_eletric_windows/64bw9AXoJ3o_000085_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is seen pressing a button located on the
+                                    car door panel, which is next to a circular speaker and a rectangular handle. The
+                                    hand continues to press the button repeatedly, applying pressure in a consistent
+                                    manner. The background shows a blurred view of greenery outside the car window.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a male voice
+                                        speaking in English with a neutral tone, saying "up for four seconds" at a
+                                        moderate pitch and rhythm, accompanied by the sound of a car engine running in
+                                        the background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/opening_or_closing_car_eletric_windows/64bw9AXoJ3o_000085_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A hand is seen pressing a button located on the
+                                    car door panel, which is next to a circular speaker and a rectangular handle. The
+                                    hand continues to press the button repeatedly, applying pressure in a consistent
+                                    manner. The background shows a blurred view of greenery outside the car window.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the paper generated
+                                    by the model is unformed with a certain degree of distortion.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/printer_printing/gFS-ORHQo6M_000000_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a printer on a desk with a
+                                    yellow sticky note attached to it, and a computer monitor in the background
+                                    displaying various images. The printer is actively printing a document, with the
+                                    paper gradually moving from the top to the bottom of the printer. The document
+                                    continues to be fed through the printer, and the paper starts to curl slightly as it
+                                    progresses. The paper is almost completely through the printer, with only a small
+                                    portion still visible.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a consistent
+                                        humming sound
+                                        throughout, likely from an electrical device, with a brief, sharp click
+                                        occurring near the end, possibly from a switch or button being pressed.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/printer_printing/gFS-ORHQo6M_000000_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: The video shows a printer on a desk with a
+                                    yellow sticky note attached to it, and a computer monitor in the background
+                                    displaying various images. The printer is actively printing a document, with the
+                                    paper gradually moving from the top to the bottom of the printer. The document
+                                    continues to be fed through the printer, and the paper starts to curl slightly as it
+                                    progresses. The paper is almost completely through the printer, with only a small
+                                    portion still visible.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the paper generated
+                                    by the model violates the rule of physics.(soft like silk)</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/ripping_paper/Dq75P8gq6-U_000012_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A pair of hands is seen holding a piece of
+                                    brown paper on a flat surface. The hands begin to lift the paper from the top edge,
+                                    causing the paper to start bending and folding. As the paper is lifted further, the
+                                    fold becomes more pronounced, and the paper starts to curl. The paper continues to
+                                    be lifted and folded, with the bottom edge now visible and the fold extending
+                                    further down. The paper is almost completely folded, with the bottom edge now fully
+                                    visible and the fold extending to the bottom of the frame. The paper is now fully
+                                    folded, with the bottom edge completely visible and the fold extending to the bottom
+                                    of the frame.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features the distinct
+                                        sound of paper
+                                        being crumpled, with a consistent rhythm and a slightly high-pitched tone, set
+                                        against a relatively quiet background.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/ripping_paper/Dq75P8gq6-U_000012_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A pair of hands is seen holding a piece of
+                                    brown paper on a flat surface. The hands begin to lift the paper from the top edge,
+                                    causing the paper to start bending and folding. As the paper is lifted further, the
+                                    fold becomes more pronounced, and the paper starts to curl. The paper continues to
+                                    be lifted and folded, with the bottom edge now visible and the fold extending
+                                    further down. The paper is almost completely folded, with the bottom edge now fully
+                                    visible and the fold extending to the bottom of the frame. The paper is now fully
+                                    folded, with the bottom edge completely visible and the fold extending to the bottom
+                                    of the frame.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                        <div class="columns items-center mb-8 is-justify-content-space-between">
+                            <div class="column is-3">
+                                <p class="text-gray-700 has-text-centered font-serif">In T2V video, the generated flame
+                                    only burns on the right side, which does not conform to the laws of physics.</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/strike_lighter/obkDwJYuc7Q_000412_t2av.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A bundle of sticks is burning with a bright
+                                    flame on a white surface, with a washing machine in the background. The flame grows
+                                    taller and more intense as the sticks continue to burn. The camera moves slightly,
+                                    capturing different angles of the burning sticks and the flame. The flame remains
+                                    steady and bright, with the sticks gradually burning down.
+                                    <br> <span style="color: #ff3864;">Audio prompt: The audio features a male voice
+                                        speaking in English with a neutral tone, saying 'pretty much out of fluid', in a
+                                        clear and straightforward manner without notable variations or background
+                                        noises.
+                                    </span> </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2AV</p>
+                            </div>
+                            <div class="column is-4-5 tooltip-container"
+                                style="flex: 0 0 calc(37.5% - 0.75rem); max-width: calc(37.5% - 0.75rem);">
+                                <video class="w-full rounded" controls>
+                                    <source
+                                        src="./static/videos/results/VGGSound/strike_lighter/obkDwJYuc7Q_000412_t2v.mp4"
+                                        type="video/mp4">
+                                </video>
+                                <span class="tooltip-text">Video prompt: A bundle of sticks is burning with a bright
+                                    flame on a white surface, with a washing machine in the background. The flame grows
+                                    taller and more intense as the sticks continue to burn. The camera moves slightly,
+                                    capturing different angles of the burning sticks and the flame. The flame remains
+                                    steady and bright, with the sticks gradually burning down.
+                                </span>
+                                <p class="mt-2 text-sm text-gray-700 has-text-centered">T2V</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Results -->
+
+</body>
